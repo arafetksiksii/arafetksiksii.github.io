@@ -1,0 +1,350 @@
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Press+Start+2P&display=swap" rel="stylesheet">  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Permanent+Marker&family=Signika+Negative:wght@300..700&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="css/tiny-slider.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<title>JIGGY</title>
+		<style>
+			body, html {
+			  margin: 0;
+			  padding: 0;
+			  height: 100%;
+			  overflow: auto;
+			  background-color: white;
+			}
+			.permanent-marker-regular {
+			  font-family: "inter", cursive;
+			  font-weight: 400;
+			  font-style: normal;
+			}
+		
+			.header-overlay {
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  width: 100%;
+			  padding: 20px;
+			  box-sizing: border-box;
+			  display: flex;
+			  justify-content: space-between;
+			  align-items: center;
+			  z-index: 999;
+			}
+			.navbar-brand {
+			  color: black; /* Changed to black */
+			  text-decoration: none;
+			  font-size: 24px;
+			}
+			.navbar-brand span {
+			  font-size: 32px;
+			  font-weight: bold;
+			}
+			.cart-icon img {
+			  width: 30px;
+			  height: auto;
+			}
+			.menu {
+			  position: absolute;
+			  bottom: 100px;
+			  left: 20px;
+			  z-index: 999;
+			  color: black; /* Changed to black */
+			  font-family: 'inter', sans-serif;
+			}
+			.menu ul {
+			  list-style: none;
+			  padding: 0;
+			  margin: 0;
+			}
+			.menu li {
+			  margin-bottom: 10px;
+			}
+			.menu li a {
+			  color: black; /* Changed to black */
+			  text-decoration: none;
+			  font-size: 24px;
+			  /* Apply the jersey-15-regular class here */
+			  font-family: 'inter', sans-serif;
+			  font-weight: 400;
+			  font-style: normal;
+			  transition: color 0.3s ease;
+			}
+			.menu li a:hover {
+			  color: black; /* Changed hover color to yellow */
+			}
+			/* Media query for small screens */
+@media (max-width: 768px) {
+  .menu-wrapper {
+    display: none; /* Hide the menu wrapper */
+  }
+}
+
+		
+			/* Styles for the product section */
+			.product-section {
+			  padding: 20px;
+			  box-sizing: border-box;
+			  overflow-y: auto; /* Enable scrolling if content overflows vertically */
+			  position: absolute;
+			  top: 100px;
+			  right: 20px;
+			  bottom: 20px;
+			  left: 250px; /* Adjust the left position to create space for the menu */
+			}
+			.product-section .container {
+			  max-width: 100%;
+			}
+			.product-item {
+			  display: flex;
+			  flex-direction: column;
+			  align-items: center;
+			  text-align: center;
+			  margin-bottom: 30px;
+			}
+			.product-thumbnail {
+			  width: 100%;
+			  max-width: 200px;
+			  height: auto;
+			  margin-bottom: 10px;
+			}
+			.product-title {
+			  font-size: 18px;
+			  margin-bottom: 5px;
+			}
+			.product-price {
+			  font-size: 16px;
+			  font-weight: bold;
+			}
+			.icon-cross {
+			  position: absolute;
+			  top: 10px;
+			  right: 10px;
+			}
+			.icon-cross img {
+			  width: 20px;
+			  height: auto;
+			}
+				/* New styles for social icons */
+				.social-icons {
+			  position: absolute;
+			  bottom: 20px;
+			  right: 20px;
+			  z-index: 999;
+			}
+			.social-icons a {
+			  color: black;
+			  text-decoration: none;
+			  font-size: 24px;
+			  margin-left: 10px;
+			  transition: color 0.3s ease;
+			}
+			.social-icons a:hover {
+			  color: black;
+			}
+			.navbar-brand img {
+    height: 50px; /* Adjust the height as needed */
+    width: auto;  /* Keeps the aspect ratio */
+}
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* Background color of the loader */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's above other content */
+}
+			
+		  </style>
+	</head>
+
+	<body>
+		<div class="loader-wrapper">
+			<img class="loader" src="jiggylogo.gif" alt="Loading...">
+		  </div>
+		<body>
+			<!-- Start Header Overlay -->
+			<div class="header-overlay">
+				<a class="navbar-brand" href="index.html"><img src="jiggyp.png" alt="Brand Image"></a>
+				<div class="cart-icon">
+				<a class="nav-link" href="cart.html"><img src="images/cartp.png"></a>
+			  </div>
+			</div>
+			<!-- End Header Overlay -->
+<!-- Move the menu inside a new div with the class "menu-wrapper" -->
+<div class="menu-wrapper">
+	<!-- Start Menu -->
+	<div class="menu">
+	  <ul>
+		<li><a href="shop.html">PRODUCTS</a></li>
+		<li><a href="contact.html">CONTACT</a></li>
+		<li><a href="about.html">ABOUT</a></li>
+	  </ul>
+	</div>
+	<!-- End Menu -->
+  </div>
+  
+		
+		<!-- Start Contact Form -->
+		<div class="untree_co-section">
+      <div class="container">
+
+        <div class="block">
+          <div class="row justify-content-center">
+
+
+            <div class="col-md-8 col-lg-8 pb-4">
+
+
+              <div class="row mb-5">
+
+
+                <div class="col-lg-4" >
+                  <div  class="service no-shadow align-items-center link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0" >
+                    <div class="service-icon color-1 mb-4" style="background-color: black;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                      </svg>
+                    </div> <!-- /.icon -->
+                    <div class="service-contents">
+                      <p>jiggy.atw@gmail.com</p>
+                    </div> <!-- /.service-contents-->
+                  </div> <!-- /.service -->
+                </div>
+
+                <div class="col-lg-4">
+                  <div  class="service no-shadow align-items-center link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0">
+                    <div class="service-icon color-1 mb-4" style="background-color: black;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                      </svg>
+                    </div> <!-- /.icon -->
+                    <div class="service-contents">
+                      <p>+216 99 900 078</p>
+                    </div> <!-- /.service-contents-->
+                  </div> <!-- /.service -->
+                </div>
+              </div>
+
+			  <form id="contact-form">
+				<div class="row">
+				  <div class="col-6">
+					<div class="form-group">
+					  <label class="text-black" for="fname">First name</label>
+					  <input type="text" class="form-control" id="fname">
+					</div>
+				  </div>
+				  <div class="col-6">
+					<div class="form-group">
+					  <label class="text-black" for="lname">Last name</label>
+					  <input type="text" class="form-control" id="lname">
+					</div>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="text-black" for="email">Email address</label>
+				  <input type="email" class="form-control" id="email">
+				</div>
+				<div class="form-group mb-5">
+				  <label class="text-black" for="message">Message</label>
+				  <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary-hover-outline">Send Message</button>
+			  </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- End Contact Form -->
+
+		
+
+  <div class="social-icons">
+	 
+	 <a href="https://www.instagram.com/jiggy.atw?igsh=cnR0NnhsaXl1ZjFr"><i class="fab fa-instagram"></i></a>
+	<a href="https://www.tiktok.com/@jiggy.atw?_t=8mVVGAOFpf4&_r=1"><i class="fab fa-tiktok"></i></a>
+  </div>
+  <script>
+	document.getElementById('contact-form').addEventListener('submit', function(event) {
+	  event.preventDefault(); // Prevent default form submission
+  
+	  // Gather form data
+	  const formData = {
+		fname: document.getElementById('fname').value,
+		lname: document.getElementById('lname').value,
+		email: document.getElementById('email').value,
+		message: document.getElementById('message').value
+	  };
+  
+	  // Send form data to server
+	  fetch('https://jiggy-back-f6020cdcad45.herokuapp.com/send-email', {
+		method: 'POST',
+		headers: {
+		  'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(formData)
+	  })
+	  .then(response => {
+		if (response.ok) {
+		  alert('Email sent successfully');
+		  // Optionally, clear the form fields after successful submission
+		  document.getElementById('fname').value = '';
+		  document.getElementById('lname').value = '';
+		  document.getElementById('email').value = '';
+		  document.getElementById('message').value = '';
+		} else {
+		  alert('Failed to send email');
+		}
+	  })
+	  .catch(error => {
+		console.error('Error:', error);
+		alert('Failed to send email');
+	  });
+	});
+  </script>
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/tiny-slider.js"></script>
+		<script src="js/custom.js"></script>
+		<script>
+			window.addEventListener("load", function() {
+			  var loader = document.querySelector(".loader-wrapper");
+			  loader.style.display = "none";
+			});
+			</script>
+	</body>
+
+</html>

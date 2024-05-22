@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="css/tiny-slider.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <title>JIGGY </title>
+  <style>
+        body, html {
+
+      background-color: white;
+    }
+    .loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* Background color of the loader */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's above other content */
+}
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+    .navbar-brand {
+      color: black; /* Changed to black */
+      text-decoration: none;
+      font-size: 24px;
+    }
+    .cart-totals-wrapper {
+      float: left; /* Align to the left */
+      width: 100%; /* Ensure it takes full width */
+    }
+    .navbar-brand img {
+    height: 50px; /* Adjust the height as needed */
+    width: auto;  /* Keeps the aspect ratio */
+}
+  </style>
+</head>
+<body>
+  <div class="loader-wrapper">
+    <img class="loader" src="jiggylogo.gif" alt="Loading...">
+  </div>
+  <!-- Start Header Overlay -->
+  <div class="header-overlay">
+		<a class="navbar-brand" href="index.html"><img src="jiggyp.png" alt="Brand Image"></a>
+  </div>
+  <!-- End Header Overlay -->
+
+  <div class="untree_co-section before-footer-section">
+    <div class="container">
+      <div class="row mb-5">
+        <form class="col-md-12" method="post">
+          <div class="site-blocks-table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="product-thumbnail">Image</th>
+                  <th class="product-name">Product</th>
+                  <th class="product-price">Price</th>
+                  <th class="product-size">Size</th>
+                  <th class="product-quantity">Quantity</th>
+                  <th class="product-total">Total</th>
+                  <th class="product-remove"></th>
+                </tr>
+              </thead>
+             <!-- Inside the <tbody> element, remove the hardcoded <tr> elements -->
+<tbody class="site-blocks-table-body"></tbody>
+
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="cart-totals-wrapper col-md-6 pl-5"> <!-- Added pl-5 class for additional padding -->
+          <div class="row justify-content-end">
+            <div class="col-md-7">
+              <div class="row">
+                <div class="col-md-12 text-right border-bottom mb-5">
+                  <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <span class="text-black">Subtotal</span>
+                </div>
+                <div class="col-md-6 text-right">
+                  <strong id="subtotal" class="text-black">0.00 TND</strong> <!-- Updated subtotal element with id -->
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <span class="text-black">Delivery</span>
+                </div>
+                <div class="col-md-6 text-right">
+                  <strong id="delivery" class="text-black">0.00 TND</strong> <!-- Updated subtotal element with id -->
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-6">
+                  <span class="text-black">Total</span>
+                </div>
+                <div class="col-md-6 text-right">
+                  <strong id="total" class="text-black">0.00 TND</strong> <!-- Updated total element with id -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!-- Rest of the Content -->
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- Add this script section at the bottom of the body -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderCartItems();
+
+    function renderCartItems() {
+      // Get cart items from local storage
+      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      let cartTableBody = document.querySelector('.site-blocks-table-body');
+      let subtotalElement = document.getElementById('subtotal'); // Select the subtotal element
+      let deliveryElement = document.getElementById('delivery'); // Select the delivery element
+      let totalElement = document.getElementById('total'); // Select the total element
+
+      // Clear existing cart items
+      cartTableBody.innerHTML = '';
+
+      // Initialize total cart amount and delivery fee
+      let subtotalAmount = 0;
+      const deliveryFee = 0;
+
+      // Loop through each cart item and generate HTML
+      cartItems.forEach((item, index) => {
+        // Calculate the total for the current item
+        let total = item.productPrice * item.quantity;
+
+        // Add the total to the subtotal
+        subtotalAmount += total;
+
+        let row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="product-thumbnail">
+            <img src="${item.image}" alt="Image" class="img-fluid">
+          </td>
+          <td class="product-name">
+            <h2 class="h5 text-black">${item.productName}</h2>
+          </td>
+          <td>${item.productPrice} TND</td>
+          <td class="product-size">
+            <h2 class="h5 text-black">${item.size}</h2>
+          </td>
+          <td>
+    <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px; margin-left: 70px;"> <!-- Increased margin-left to 20px -->
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-black decrease" type="button">&minus;</button>
+        </div>
+        
+        <input type="text" class="form-control text-center quantity-amount" value="${item.quantity}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" disabled>
+        <div class="input-group-append">
+            <button class="btn btn-outline-black increase" type="button">&plus;</button>
+        </div>
+    </div>
+</td>
+
+          <td>${total} TND</td> <!-- Display the calculated total -->
+          <td><button class="btn btn-black btn-sm remove-btn" data-index="${index}">Remove</button></td>
+        `;
+        cartTableBody.appendChild(row);
+      });
+
+      // Calculate the total amount including delivery fee
+      let totalAmount = subtotalAmount + deliveryFee;
+
+      // Display the subtotal, delivery fee, and total cart amount
+      subtotalElement.innerText = `${subtotalAmount.toFixed(2)} TND`;
+      deliveryElement.innerText = ` ${deliveryFee.toFixed(2)} TND`;
+      totalElement.innerText = `${totalAmount.toFixed(2)} TND`;
+
+      // Add event listeners to the remove buttons
+      let removeButtons = document.querySelectorAll('.remove-btn');
+      removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          let index = parseInt(this.getAttribute('data-index'));
+          // Remove the item from cart items array
+          cartItems.splice(index, 1);
+          // Update local storage
+          localStorage.setItem('cart', JSON.stringify(cartItems));
+          // Re-render cart items
+          renderCartItems();
+        });
+      });
+    }
+  });
+</script>
+
+  
+    
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+    window.addEventListener("load", function() {
+      var loader = document.querySelector(".loader-wrapper");
+      loader.style.display = "none";
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>JIGGY</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="favicon.png"/>
+    <link rel="shortcut icon" href="favicon.png">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Permanent+Marker&family=Signika+Negative:wght@300..700&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* Remove overflow: auto; */
+  overflow: auto; /* Add overflow: auto; to enable scrolling */
+}
+
+    .permanent-marker-regular {
+      font-family: "inter", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+    .navbar-brand {
+      color: black; /* Changed to black */
+      text-decoration: none;
+      font-size: 24px;
+    }
+    .navbar-brand span {
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .cart-icon img {
+      width: 30px;
+      height: auto;
+    }
+    .menu {
+      position: absolute;
+      bottom: 100px;
+      left: 20px;
+      z-index: 999;
+      color: black; /* Changed to black */
+      font-family: 'inter', sans-serif;
+    }
+    .menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .menu li {
+      margin-bottom: 10px;
+    }
+    .menu li a {
+      color: black; /* Changed to black */
+      text-decoration: none;
+      font-size: 24px;
+      /* Apply the jersey-15-regular class here */
+      font-family: 'inter', sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      transition: color 0.3s ease;
+    }
+    .menu li a:hover {
+      color: gray; /* Changed hover color to yellow */
+    }
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .menu-wrapper {
+    display: none; /* Hide the menu wrapper */
+  }
+  .slick3 .wrap-pic-w img {
+    width: 200px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  .sec-product-detail {
+    position: relative; /* Change to relative positioning */
+    top: 5%; /* Move the section down by 50% of the viewport height */
+   /* left: 50%; /* Move the section to the center horizontally */
+    right: 20%; /* Reset right positioning */
+  /*  bottom: auto; /* Reset bottom positioning */
+   /* width: 80%; /* Adjust width as needed */
+   /* max-width: 400px; /* Limit maximum width */
+   /* margin: 0 auto;  Center horizontally */
+}
+  
+}
+
+    /* Styles for the product section */
+    .product-section {
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto; /* Enable scrolling if content overflows vertically */
+      position: absolute;
+      top: 100px;
+      right: 20px;
+      bottom: 20px;
+      left: 250px; /* Adjust the left position to create space for the menu */
+    }
+    .product-section .container {
+      max-width: 100%;
+    }
+    .product-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .product-thumbnail {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .product-title {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+	.product-description {
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+    .product-price {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .icon-cross {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .icon-cross img {
+      width: 20px;
+      height: auto;
+    }
+	    /* New styles for social icons */
+		.social-icons {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .social-icons a {
+      color: black;
+      text-decoration: none;
+      font-size: 24px;
+      margin-left: 10px;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: gray;
+    }
+	.navbar-brand img {
+    height: 50px; /* Adjust the height as needed */
+    width: auto;  /* Keeps the aspect ratio */
+}
+/* Default state */
+.bg-black {
+    background-color: black;
+    color: white; /* Adding this to ensure text is visible */
+}
+
+/* Hover state */
+.bg-black:hover {
+    background-color: gray;
+}
+
+
+
+.dimensions-link,
+.materials-link {
+    color: #0366d6; /* Adjust the color as needed */
+    text-decoration: underline black;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.dimensions-link {
+    text-decoration: underline black; /* Set the text decoration color to black */
+}
+
+.dimensions-link:hover,
+.materials-link:hover {
+    color: #0645ad; /* Adjust the hover color as needed */
+}
+
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* Background color of the loader */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's above other content */
+}
+.sec-product-detail {
+  padding-left: 200px; /* Adjust the value as needed */
+}
+
+
+
+  </style>
+</head>
+<body class="animsition">
+	
+	  <!-- Start Header Overlay -->
+	  <div class="header-overlay">
+		<a class="navbar-brand" href="index.html"><img src="jiggyp.png" alt="Brand Image"></a>
+		<div class="cart-icon">
+		  <a class="nav-link" href="cart.html"><img src="images/cartp.png"></a>
+		</div>
+	  </div>
+	  <!-- End Header Overlay -->
+	<!-- Move the menu inside a new div with the class "menu-wrapper" -->
+<div class="menu-wrapper">
+  <!-- Start Menu -->
+  <div class="menu">
+    <ul>
+      <li><a href="shop.html">PRODUCTS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+    </ul>
+  </div>
+  <!-- End Menu -->
+</div>
+
+	
+
+		
+
+	<!-- Product Detail -->
+<br><br>
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-7 p-b-30">
+                <div class="p-l-25 p-r-30 p-lr-0-lg">
+                    <div class="wrap-slick3 flex-sb flex-w">
+                        
+                        <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+                        <div class="slick3 gallery-lb">
+                                <div class="wrap-pic-w pos-relative">
+                                    <img id="product-image" src="" alt="Product Image">
+
+                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" id="product-image-link" href="#">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                </div>
+                            
+
+                                <div class="wrap-pic-w pos-relative">
+                                    <img id="product-image2" src="" alt="Product Image" >
+
+                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" id="product-image-link2" href="#">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                </div>
+                            
+
+                                <div class="wrap-pic-w pos-relative">
+                                    <img id="product-image3" src="" alt="Product Image" style="width: 420px; height: 400px;">
+
+                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" id="product-image-link3" href="#">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5 p-b-30">
+                <div class="p-r-50 p-t-5 p-lr-0-lg">
+                    <h4 id="product-title" class="mtext-105 cl2 js-name-detail p-b-14">
+
+                    </h4>
+
+
+                    <span id="product-price" class="mtext-106 cl2">
+
+                    </span>
+
+
+                    <p id="product-description" class="stext-102 cl3 p-t-23">
+                        Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+                    </p>
+
+                    <!--  -->
+                    <div class="p-t-33">
+                        <div class="flex-w flex-r-m p-b-10">
+                            <div class="size-203 flex-c-m respon6">
+                                Size
+                            </div>
+                            <br>
+                            <div class="size-204 respon6-next">
+                                <div class="rs1-select2 bor8 bg0">
+                                    <select class="js-select2" name="time">
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div>
+                            <br>
+
+                        </div>
+
+                        <div class="flex-w flex-r-m p-b-10">
+                            <div class="size-204 flex-w flex-m respon6-next">
+                                <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                    </div>
+                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                        <i class="fs-16 zmdi zmdi-plus"></i>
+                                    </div>
+                                </div>
+                                <button class="flex-c-m stext-101 cl0 size-101 bg-black bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                    Add to cart
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Move these sections here -->
+                        <div class="wrap-dimensions-materials">
+                            <div class="product-details mtext-102 cl3 p-t-23">
+                                <p class="m-b-5">
+
+                                    <a href="javascript:void(0)" onclick="toggleDimensions()" class="dimensions-link">
+                                        <strong style="color: black;">DIMENSIONS</strong>
+                                    </a>
+                                </p>
+                                <div id="product-dimensions" style="display: none;">
+                                    <!-- Content for dimensions goes here -->
+                                    <img src="dimensions_image.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="product-details mtext-102 cl3 p-t-23">
+                                <p class="m-b-5">
+                                    <a href="javascript:void(0)" onclick="toggleMaterials()" class="materials-link">
+                                        <strong style="color: black;">MATERIALS</strong>
+
+                                    </a>
+                                </p>
+                                <div id="product-materials" style="display: none;">
+                                    <!-- Content for materials goes here -->
+                                    <p>Materials content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of moved sections -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+	
+	<script>
+		function toggleDimensions() {
+			var dimensionsDiv = document.getElementById("product-dimensions");
+			if (dimensionsDiv.style.display === "none") {
+				dimensionsDiv.style.display = "block";
+			} else {
+				dimensionsDiv.style.display = "none";
+			}
+		}
+	
+		function toggleMaterials() {
+			var materialsDiv = document.getElementById("product-materials");
+			if (materialsDiv.style.display === "none") {
+				materialsDiv.style.display = "block";
+			} else {
+				materialsDiv.style.display = "none";
+			}
+		}
+	</script>
+
+	<script>
+		// Parse the product ID from the URL
+		const urlParams = new URLSearchParams(window.location.search);
+		const productId = urlParams.get('id');
+	
+		// Make AJAX request to fetch product details
+		fetch(`https://jiggy-back-f6020cdcad45.herokuapp.com/produit/detail/${productId}`)
+    .then(response => response.json())
+    .then(data => {
+        // Populate HTML elements with fetched product details
+        document.getElementById('product-image').src = data.image;
+        document.getElementById('product-image2').src = data.image2;
+        document.getElementById('product-image3').src = data.image3;
+
+        // Set the href attribute of product-image-link to data.image
+        document.getElementById('product-image-link').setAttribute('href', data.image);
+        document.getElementById('product-image-link2').setAttribute('href', data.image2);
+        document.getElementById('product-image-link3').setAttribute('href', data.image3);
+
+
+        document.getElementById('product-title').innerText = data.title;
+        document.getElementById('product-price').innerText = `${data.price} TND`;
+        document.getElementById('product-description').innerText = data.description;
+		if (data.dimensions) {
+    const dimensionsContainer = document.getElementById('product-dimensions');
+    const dimensionsImage = document.createElement('img');
+    dimensionsImage.src = data.dimensions;
+    dimensionsImage.alt = 'Dimensions Image';
+    dimensionsContainer.appendChild(dimensionsImage);
+}document.getElementById('product-materials').innerText = data.materials;
+    })
+    .catch(error => console.error('Error fetching product details:', error));
+
+
+
+	</script>
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+		
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/parallax100/parallax100.js"></script>
+	<script>
+        $('.parallax100').parallax100();
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script>
+		$('.gallery-lb').each(function() { // the containers for all your galleries
+			$(this).magnificPopup({
+		        delegate: 'a', // the selector for gallery item
+		        type: 'image',
+		        gallery: {
+		        	enabled:true
+		        },
+		        mainClass: 'mfp-fade'
+		    });
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/sweetalert/sweetalert.min.js"></script>
+<!-- Add this function before the script section -->
+<script>
+function addToCart(productId, productName, productPrice, quantity, PRODUCTSize, productImage) {
+    // Get the existing cart items from local storage
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if the product is already in the cart
+    let existingProductIndex = cartItems.findIndex(item => item.productName === productName && item.size === PRODUCTSize);
+
+    if (existingProductIndex !== -1) {
+        // Update the quantity if the product is already in the cart with the same size
+        cartItems[existingProductIndex].quantity += quantity;
+    } else {
+        // Add the product to the cart if it's not already in the cart
+        cartItems.push({
+            productId: productId,
+            productName: productName,
+            productPrice: productPrice,
+            quantity: quantity,
+            size: PRODUCTSize, // Add product size to cart item
+            image: productImage // Add product image to cart item
+        });
+    }
+
+    // Store the updated cart items in local storage
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+}
+
+
+</script>
+
+<!-- Update the click event handler for the "Add to cart" button -->
+<script>
+$(document).ready(function() {
+    $('.js-addcart-detail').on('click', function() {
+        var productId = $(this).data('product-id'); // Assuming you have a data-product-id attribute on the button
+        var productName = $(this).closest('.sec-product-detail').find('#product-title').html().trim();
+		var description = $(this).closest('.sec-product-detail').find('#product-description').html().trim();
+        var productPrice = parseFloat($(this).closest('.sec-product-detail').find('#product-price').text().replace('$', ''));
+        var quantity = parseInt($(this).closest('.sec-product-detail').find('.num-product').val());
+        var PRODUCTSize = $(this).closest('.sec-product-detail').find('.js-select2 option:selected').text(); // Get selected size from dropdown
+        var productImage = $(this).closest('.sec-product-detail').find('#product-image').attr('src'); // Get product image source
+
+        addToCart(productId, productName, productPrice, quantity, PRODUCTSize, productImage);
+        swal(productName, "is added to cart !", "success");
+    });
+});
+</script>
+<!--===============================================================================================-->
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+  <script>
+    window.addEventListener("load", function() {
+      var loader = document.querySelector(".loader-wrapper");
+      loader.style.display = "none";
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/tiny-slider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>JIGGY</title>
+    <style>
+            body, html {
+
+      background-color: white;
+    }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+        }
+
+        /* New styles for social icons */
+        .social-icons {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .social-icons a {
+            color: black;
+            text-decoration: none;
+            font-size: 24px;
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: black;
+        }
+
+        .navbar-brand {
+            color: black; /* Changed to black */
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .navbar-brand img {
+      height: 50px; /* Adjust the height as needed */
+      width: auto;  /* Keeps the aspect ratio */
+    }
+    .loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* Background color of the loader */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's above other content */
+}
+    </style>
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <img class="loader" src="jiggylogo.gif" alt="Loading...">
+      </div>
+<!-- Start Header Overlay -->
+<div class="header-overlay">
+    <a class="navbar-brand" href="index.html"><img src="jiggyp.png" alt="Brand Image"></a>
+</div>
+<!-- End Header Overlay -->
+
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-5 mb-md-0">
+                <h2 class="h3 mb-3 text-black">Billing Details</h2>
+                <div class="p-3 p-lg-5 border bg-white">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label for="c_name" class="text-black">Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="c_name" name="c_name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="c_country" class="text-black">State <span class="text-danger">*</span></label>
+                        <select id="c_country" class="form-control" required>
+                            <option value="">Select a state</option>    
+                            <option value="Ariana">Ariana</option>    
+                            <option value="Béja">Béja</option>    
+                            <option value="Ben Arous">Ben Arous</option>    
+                            <option value="Bizerte">Bizerte</option>    
+                            <option value="Gabès">Gabès</option>    
+                            <option value="Gafsa">Gafsa</option>    
+                            <option value="Jendouba">Jendouba</option>    
+                            <option value="Kairouan">Kairouan</option>    
+                            <option value="Sidi Bouzid">Sidi Bouzid</option>    
+                            <option value="Siliana">Siliana</option>    
+                            <option value="Sousse">Sousse</option>    
+                            <option value="Tataouine">Tataouine</option>    
+                            <option value="Tozeur">Tozeur</option>    
+                            <option value="Tunis">Tunis</option>    
+                            <option value="Zaghouan">Zaghouan</option>    
+                            <option value="Kasserine">Kasserine</option>    
+                            <option value="Kebili">Kebili</option>    
+                            <option value="Kef">Kef</option>    
+                            <option value="Mahdia">Mahdia</option>    
+                            <option value="Manouba">Manouba</option>    
+                            <option value="Medenine">Medenine</option>    
+                            <option value="Monastir">Monastir</option>    
+                            <option value="Nabeul">Nabeul</option>    
+                            <option value="Sfax">Sfax</option>                              
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label for="c_adress" class="text-black">Address <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="c_adress" name="c_adress" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label for="c_phone" class="text-black">Phone number <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="c_phone" name="c_phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="c_email" name="c_email" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="h3 mb-3 text-black">Your Order</h2>
+                        <div class="p-3 p-lg-5 border bg-white">
+                            <!-- Your Order Content -->
+                            <table class="table site-block-order-table mb-5">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="order-items"> <!-- Add an ID to the tbody -->
+                                </tbody>
+                            </table>
+                            <div id="subtotal" class="font-weight-bold mb-3"></div> <!-- Placeholder for cart subtotal -->
+                            <div id="delivery" class="font-weight-bold mb-3">Delivery: 0.00 TND</div> <!-- Placeholder for delivery fee -->
+                            <div id="total" class="font-weight-bold"></div> <!-- Placeholder for total -->
+                            <div class="form-group mt-3">
+                                <button class="btn btn-black btn-lg py-3 btn-block" id="placeOrderBtn">Place Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    renderOrderItems();
+            
+                    function renderOrderItems() {
+                        let orderItems = JSON.parse(localStorage.getItem('cart')) || [];
+                        let orderTableBody = document.getElementById('order-items');
+                        let subtotalElement = document.getElementById('subtotal');
+                        let totalElement = document.getElementById('total');
+            
+                        // Clear existing order items
+                        orderTableBody.innerHTML = '';
+            
+                        let subtotalAmount = 0;
+            
+                        orderItems.forEach(item => {
+                            // Calculate the total for the current item
+                            let total = item.productPrice * item.quantity;
+            
+                            // Add the total to the subtotal
+                            subtotalAmount += total;
+            
+                            // Generate HTML for the current item
+                            let row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${item.productName} x ${item.quantity} ${item.size}</td>
+                                <td>${total.toFixed(2)} TND</td>
+                            `;
+                            orderTableBody.appendChild(row);
+                        });
+            
+                        // Calculate the total amount including delivery fee
+                        let deliveryFee = 0;
+                        let totalAmount = subtotalAmount + deliveryFee;
+            
+                        // Display the subtotal, delivery fee, and total
+                        subtotalElement.innerText = `Subtotal: ${subtotalAmount.toFixed(2)} TND`;
+                        totalElement.innerText = `Total: ${totalAmount.toFixed(2)} TND`;
+                    }
+                });
+            </script>
+            
+        </div>
+    </div>
+</div>
+<script> 
+document.addEventListener("DOMContentLoaded", function () {
+    const placeOrderBtn = document.getElementById('placeOrderBtn');
+    placeOrderBtn.addEventListener('click', placeOrder);
+
+    function placeOrder() {
+        const name = document.getElementById('c_name').value;
+        const state = document.getElementById('c_country').value;
+        const address = document.getElementById('c_adress').value;
+        const phoneNumber = document.getElementById('c_phone').value;
+        const email = document.getElementById('c_email').value;
+
+        // Retrieve order details from local storage
+        const orderItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Convert order items to a string
+        const orderString = orderItems.map(item => `${item.productName} x ${item.quantity} ${item.size}`).join(', ');
+
+        // Prepare data to send
+        const data = {
+            name,
+            state,
+            address,
+            phoneNumber,
+            email,
+            order: orderString // Pass the order as a string
+        };
+
+        console.log('Sending data:', data); // Log the data being sent to the server
+
+        // Send a POST request to your server
+        fetch('https://jiggy-back-f6020cdcad45.herokuapp.com/commande/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to place order');
+            }
+            return response.json();
+        })
+        .then(responseData => {
+            // Handle success response
+            console.log('Order placed successfully:', responseData);
+            // clear local storage 
+            localStorage.clear();
+
+            // Optionally, redirect the user to a thank you page
+            window.location.href = 'thankyou.html';
+        })
+        .catch(error => {
+            // Handle error
+            console.error('Error placing order:', error);
+            // Optionally, display an error message to the user
+            alert('Failed to place order. Please try again later.');
+        });
+    }
+});
+
+</script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/custom.js"></script>
+<script>
+    window.addEventListener("load", function() {
+      var loader = document.querySelector(".loader-wrapper");
+      loader.style.display = "none";
+    });
+    </script>
+</body>
+
+</html>
