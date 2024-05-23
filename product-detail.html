@@ -117,21 +117,69 @@ body, html {
     display: none; /* Hide the menu wrapper */
   }
   .slick3 .wrap-pic-w img {
-    width: 200px; /* Set the desired width */
+    width: 100%; /* Make the image take full width */
     height: auto; /* Maintain aspect ratio */
   }
   .sec-product-detail {
-    position: relative; /* Change to relative positioning */
-    top: 5%; /* Move the section down by 50% of the viewport height */
-   /* left: 50%; /* Move the section to the center horizontally */
-    right: 20%; /* Reset right positioning */
-  /*  bottom: auto; /* Reset bottom positioning */
-   /* width: 80%; /* Adjust width as needed */
-   /* max-width: 400px; /* Limit maximum width */
-   /* margin: 0 auto;  Center horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .sec-product-detail .container {
+    max-width: 100%;
+    padding: 0;
+  }
+  .wrap-slick3 {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .col-md-6,
+  .col-lg-7,
+  .col-lg-5 {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  #product-image3 {
+    display: none; /* Hide the third image */
+  }
+  .slick3 .wrap-pic-w {
+    justify-content: center;
+  }
+  .p-r-50, .p-lr-0-lg {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  .p-t-5 {
+    padding-top: 5px !important;
+  }
+  .p-t-33 {
+    padding-top: 33px !important;
+  }
+  .p-b-30 {
+    padding-bottom: 30px !important;
+  }
+  .mtext-105, .mtext-106, .stext-102 {
+    text-align: center !important;
+  }
+  .p-t-23 {
+    padding-top: 23px !important;
+  }
+  .flex-w, .flex-r-m, .flex-c-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .mtext-106 {
+    display: flex;
+    justify-content: center;
+  }
 }
-  
-}
+
 
     /* Styles for the product section */
     .product-section {
@@ -152,6 +200,7 @@ body, html {
       flex-direction: column;
       align-items: center;
       text-align: center;
+      
       margin-bottom: 30px;
     }
     .product-thumbnail {
@@ -244,7 +293,8 @@ body, html {
   z-index: 9999; /* Ensure it's above other content */
 }
 .sec-product-detail {
-  padding-left: 200px; /* Adjust the value as needed */
+  padding-left: 0; /* Adjust the value as needed */
+  
 }
 
 
