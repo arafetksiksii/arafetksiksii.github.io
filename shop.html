@@ -94,11 +94,12 @@
     display: none; /* Hide the menu wrapper */
   }
   .product-section {
-    left: 50%; /* Center the product section horizontally */
+    left: 0%; /* Center the product section horizontally */
     transform: translateX(-50%); /* Center the product section horizontally */
     padding-right: 0; /* Remove padding added for the scroll bar width */
-
+    width: 190%; /* Increase the width of the product items */
   }
+
   .product-section {
   overflow-y: auto; /* Enable scrolling if content overflows vertically */
   -ms-overflow-style: none; /* Hide scrollbar on IE and Edge */
@@ -108,6 +109,16 @@
 .product-section::-webkit-scrollbar {
   display: none; /* Hide scrollbar on Chrome, Safari, and Opera */
 }
+.product-item {
+    transform: none !important;
+    transition: none !important;
+  }
+  .product-item:hover {
+    transform: none !important; /* Remove any transformation */
+    transition: none !important; /* Remove any transition effects */
+    box-shadow: none !important; /* Remove box-shadow */
+    background-color: transparent !important; /* Reset background color */
+  }
 
 }
     
@@ -134,7 +145,7 @@
     }
     .product-thumbnail {
       width: 100%;
-      max-width: 330px; /* Increased max-width */
+      max-width: 430px; /* Increased max-width */
       height: auto;
       margin-bottom: 10px;
     }
