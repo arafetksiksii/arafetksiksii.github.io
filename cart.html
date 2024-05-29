@@ -128,7 +128,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
+<button id="checkoutButton" class="btn btn-black btn-lg py-3 btn-block" onclick="proceedToCheckout()">Proceed To Checkout</button>
                 </div>
               </div>
             </div>
@@ -142,87 +142,90 @@
     </div>
   </div>
 <!-- Add this script section at the bottom of the body -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    renderCartItems();
-
-    function renderCartItems() {
-      // Get cart items from local storage
-      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-      let cartTableBody = document.querySelector('.site-blocks-table-body');
-      let subtotalElement = document.getElementById('subtotal'); // Select the subtotal element
-      let deliveryElement = document.getElementById('delivery'); // Select the delivery element
-      let totalElement = document.getElementById('total'); // Select the total element
-
-      // Clear existing cart items
-      cartTableBody.innerHTML = '';
-
-      // Initialize total cart amount and delivery fee
-      let subtotalAmount = 0;
-      const deliveryFee = 0;
-
-      // Loop through each cart item and generate HTML
-      cartItems.forEach((item, index) => {
-        // Calculate the total for the current item
-        let total = item.productPrice * item.quantity;
-
-        // Add the total to the subtotal
-        subtotalAmount += total;
-
-        let row = document.createElement('tr');
-        row.innerHTML = `
-          <td class="product-thumbnail">
-            <img src="${item.image}" alt="Image" class="img-fluid">
-          </td>
-          <td class="product-name">
-            <h2 class="h5 text-black">${item.productName}</h2>
-          </td>
-          <td>${item.productPrice} TND</td>
-          <td class="product-size">
-            <h2 class="h5 text-black">${item.size}</h2>
-          </td>
-          <td>
-    <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px; margin-left: 70px;"> <!-- Increased margin-left to 20px -->
-        <div class="input-group-prepend">
-            <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-        </div>
-        
-        <input type="text" class="form-control text-center quantity-amount" value="${item.quantity}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" disabled>
-        <div class="input-group-append">
-            <button class="btn btn-outline-black increase" type="button">&plus;</button>
-        </div>
-    </div>
-</td>
-
-          <td>${total} TND</td> <!-- Display the calculated total -->
-          <td><button class="btn btn-black btn-sm remove-btn" data-index="${index}">Remove</button></td>
-        `;
-        cartTableBody.appendChild(row);
-      });
-
-      // Calculate the total amount including delivery fee
-      let totalAmount = subtotalAmount + deliveryFee;
-
-      // Display the subtotal, delivery fee, and total cart amount
-      subtotalElement.innerText = `${subtotalAmount.toFixed(2)} TND`;
-      deliveryElement.innerText = ` ${deliveryFee.toFixed(2)} TND`;
-      totalElement.innerText = `${totalAmount.toFixed(2)} TND`;
-
-      // Add event listeners to the remove buttons
-      let removeButtons = document.querySelectorAll('.remove-btn');
-      removeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          let index = parseInt(this.getAttribute('data-index'));
-          // Remove the item from cart items array
-          cartItems.splice(index, 1);
-          // Update local storage
-          localStorage.setItem('cart', JSON.stringify(cartItems));
-          // Re-render cart items
-          renderCartItems();
-        });
-      });
+	<script>
+  function proceedToCheckout() {
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cartItems.length === 0) {
+      alert('You must have at least 1 product in your bag.');
+    } else {
+      window.location.href = 'checkout.html';
     }
-  });
+  }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderCartItems();
+
+  function renderCartItems() {
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartTableBody = document.querySelector('.site-blocks-table-body');
+    let subtotalElement = document.getElementById('subtotal');
+    let deliveryElement = document.getElementById('delivery');
+    let totalElement = document.getElementById('total');
+    let checkoutButton = document.getElementById('checkoutButton');
+
+    cartTableBody.innerHTML = '';
+
+    let subtotalAmount = 0;
+    const deliveryFee = 0;
+
+    cartItems.forEach((item, index) => {
+      let total = item.productPrice * item.quantity;
+      subtotalAmount += total;
+
+      let row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="product-thumbnail">
+          <img src="${item.image}" alt="Image" class="img-fluid">
+        </td>
+        <td class="product-name">
+          <h2 class="h5 text-black">${item.productName}</h2>
+        </td>
+        <td>${item.productPrice} TND</td>
+        <td class="product-size">
+          <h2 class="h5 text-black">${item.size}</h2>
+        </td>
+        <td>
+          <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px; margin-left: 70px;">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-black decrease" type="button">&minus;</button>
+            </div>
+            <input type="text" class="form-control text-center quantity-amount" value="${item.quantity}" disabled>
+            <div class="input-group-append">
+              <button class="btn btn-outline-black increase" type="button">&plus;</button>
+            </div>
+          </div>
+        </td>
+        <td>${total} TND</td>
+        <td><button class="btn btn-black btn-sm remove-btn" data-index="${index}">Remove</button></td>
+      `;
+      cartTableBody.appendChild(row);
+    });
+
+    let totalAmount = subtotalAmount + deliveryFee;
+
+    subtotalElement.innerText = `${subtotalAmount.toFixed(2)} TND`;
+    deliveryElement.innerText = `${deliveryFee.toFixed(2)} TND`;
+    totalElement.innerText = `${totalAmount.toFixed(2)} TND`;
+
+    if (cartItems.length === 0) {
+      checkoutButton.disabled = true;
+    } else {
+      checkoutButton.disabled = false;
+    }
+
+    let removeButtons = document.querySelectorAll('.remove-btn');
+    removeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        let index = parseInt(this.getAttribute('data-index'));
+        cartItems.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        renderCartItems();
+      });
+    });
+  }
+});
 </script>
 
   
