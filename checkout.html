@@ -216,9 +216,54 @@
                             placeOrderBtn.disabled = !isFormValid;
                         }
 
-                        placeOrderBtn.addEventListener('click', function () {
-                            // Handle place order action
-                        });
+                                 placeOrderBtn.addEventListener('click', placeOrder);
+
+                           function placeOrder() {
+                            const name = document.getElementById('c_name').value;
+                            const state = document.getElementById('c_country').value;
+                            const address = document.getElementById('c_adress').value;
+                            const phoneNumber = document.getElementById('c_phone').value;
+                            const email = document.getElementById('c_email').value;
+
+                            const orderItems = JSON.parse(localStorage.getItem('cart')) || [];
+                            const orderString = orderItems.map(item => `${item.productName} x ${item.quantity} ${item.size}`).join(', ');
+
+                            const data = {
+                                name,
+                                state,
+                                address,
+                                phoneNumber,
+                                email,
+                                order: orderString
+                            };
+
+                            console.log('Sending data:', data);
+
+                            fetch('https://jiggy-back-f6020cdcad45.herokuapp.com/commande/', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Failed to place order');
+                                }
+                                return response.json();
+                            })
+                            .then(responseData => {
+                                console.log('Order placed successfully:', responseData);
+                                localStorage.clear();
+                                window.location.href = 'thankyou.html';
+                            })
+                            .catch(error => {
+                                console.error('Error placing order:', error);
+                                alert('Failed to place order. Please try again later.');
+                            });
+                        }
+                    });
+
 
                         // Loader
                         const loaderWrapper = document.querySelector('.loader-wrapper');
