@@ -169,7 +169,13 @@
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
                         renderOrderItems();
-                        checkFormValidity();
+
+                        const placeOrderBtn = document.getElementById('placeOrderBtn');
+                        const formFields = document.querySelectorAll('#c_name, #c_country, #c_adress, #c_phone, #c_email');
+
+                        formFields.forEach(field => {
+                            field.addEventListener('input', checkFormValidity);
+                        });
 
                         function renderOrderItems() {
                             let orderItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -199,13 +205,6 @@
                             subtotalElement.innerText = `Subtotal: ${subtotalAmount.toFixed(2)} TND`;
                             totalElement.innerText = `Total: ${totalAmount.toFixed(2)} TND`;
                         }
-
-                        const placeOrderBtn = document.getElementById('placeOrderBtn');
-                        const formFields = document.querySelectorAll('#c_name, #c_country, #c_adress, #c_phone, #c_email');
-
-                        formFields.forEach(field => {
-                            field.addEventListener('input', checkFormValidity);
-                        });
 
                         function checkFormValidity() {
                             let isFormValid = true;
