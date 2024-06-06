@@ -413,7 +413,10 @@ body, html {
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
+				<p id="out-of-stock-message" style="color: red; display: none;">Legacy T-shirt size S is out of stock</p>
+
                             </div>
+
                             <br>
 
                         </div>
@@ -645,6 +648,29 @@ $(document).ready(function() {
 			})
 		});
 	</script>
+	<script>
+    $(document).ready(function() {
+        function checkStock() {
+            var selectedSize = $('.js-select2 option:selected').text();
+            var productTitle = $('#product-title').text().trim();
+            var addToCartButton = $('.js-addcart-detail');
+            var outOfStockMessage = $('#out-of-stock-message');
+
+            if (productTitle === "Legacy T-shirt" && selectedSize === "S") {
+                outOfStockMessage.show();
+                addToCartButton.prop('disabled', true);
+            } else {
+                outOfStockMessage.hide();
+                addToCartButton.prop('disabled', false);
+            }
+        }
+
+        // Run the check on page load and when the size selection changes
+        checkStock();
+        $('.js-select2').on('change', checkStock);
+    });
+</script>
+
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
   <script>
