@@ -412,6 +412,10 @@ body, html {
                                         <option>XL</option>
                                     </select>
                                     <div class="dropDownSelect2"></div>
+					      </div>
+				<p id="limited-stock-message" style="color: red; display: none;">Only a few left .</p>
+
+                            </div>
                                 </div>
 				<p id="out-of-stock-message" style="color: red; display: none;">Legacy T-shirt size S is out of stock</p>
 
@@ -655,12 +659,16 @@ $(document).ready(function() {
             var productTitle = $('#product-title').text().trim();
             var addToCartButton = $('.js-addcart-detail');
             var outOfStockMessage = $('#out-of-stock-message');
+            var limitedStockMessage = $('#limited-stock-message');
 
             if (productTitle === "Legacy T-shirt" && selectedSize === "S") {
                 outOfStockMessage.show();
+		 limitedStockMessage.hide();
+
                 addToCartButton.prop('disabled', true);
             } else {
                 outOfStockMessage.hide();
+		limitedStockMessage.show();
                 addToCartButton.prop('disabled', false);
             }
         }
