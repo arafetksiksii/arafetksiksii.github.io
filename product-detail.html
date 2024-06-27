@@ -660,26 +660,21 @@ $(document).ready(function() {
             var productTitle = $('#product-title').text().trim();
             var addToCartButton = $('.js-addcart-detail');
             var outOfStockMessageS = $('#out-of-stock-messageS');
-	var outOfStockMessageM = $('#out-of-stock-messageM');
-	
+            var outOfStockMessageM = $('#out-of-stock-messageM');
             var limitedStockMessage = $('#limited-stock-message');
 
-if (productTitle === "Legacy T-shirt" && selectedSize === "S" ) {
+            if (productTitle === "Legacy T-shirt" && selectedSize === "S") {
                 outOfStockMessageS.show();
-		 limitedStockMessage.hide();
-
+                limitedStockMessage.hide();
                 addToCartButton.prop('disabled', true);
-	else if (productTitle === "Legacy T-shirt" && selectedSize === "M" ) {
-	                outOfStockMessageM.show();
-		 limitedStockMessage.hide();
-
+            } else if (productTitle === "Legacy T-shirt" && selectedSize === "M") {
+                outOfStockMessageM.show();
+                limitedStockMessage.hide();
                 addToCartButton.prop('disabled', true);
-	}
             } else {
+                outOfStockMessageS.hide();
                 outOfStockMessageM.hide();
-		outOfStockMessageL.hide();
-
-		limitedStockMessage.show();
+                limitedStockMessage.show();
                 addToCartButton.prop('disabled', false);
             }
         }
@@ -689,6 +684,7 @@ if (productTitle === "Legacy T-shirt" && selectedSize === "S" ) {
         $('.js-select2').on('change', checkStock);
     });
 </script>
+
 
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
