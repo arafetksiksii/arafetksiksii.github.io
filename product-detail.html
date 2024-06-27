@@ -665,10 +665,12 @@ $(document).ready(function() {
 
             if (productTitle === "Legacy T-shirt" && selectedSize === "S") {
                 outOfStockMessageS.show();
+		outOfStockMessageM.hide();
                 limitedStockMessage.hide();
                 addToCartButton.prop('disabled', true);
             } else if (productTitle === "Legacy T-shirt" && selectedSize === "M") {
                 outOfStockMessageM.show();
+		outOfStockMessageS.hide();
                 limitedStockMessage.hide();
                 addToCartButton.prop('disabled', true);
             } else {
