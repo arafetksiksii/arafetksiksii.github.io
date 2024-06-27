@@ -417,7 +417,8 @@ body, html {
                                 </div>
 				<p id="limited-stock-message" style="color: red; display: none;">  Only a few items left </p>
 
-				<p id="out-of-stock-message" style="color: red; display: none;">Legacy T-shirt size S is out of stock</p>
+				<p id="out-of-stock-messageS" style="color: red; display: none;"> SIZE S IS OUT OF STOCK</p>
+				<p id="out-of-stock-messageM" style="color: red; display: none;"> SIZE M IS OUT OF STOCK </p>
 
                             </div>
 
@@ -658,16 +659,26 @@ $(document).ready(function() {
             var selectedSize = $('.js-select2 option:selected').text();
             var productTitle = $('#product-title').text().trim();
             var addToCartButton = $('.js-addcart-detail');
-            var outOfStockMessage = $('#out-of-stock-message');
+            var outOfStockMessageS = $('#out-of-stock-messageS');
+	var outOfStockMessageM = $('#out-of-stock-messageM');
+	
             var limitedStockMessage = $('#limited-stock-message');
 
-if (productTitle === "Legacy T-shirt" && (selectedSize === "S" || selectedSize === "M")) {
-                outOfStockMessage.show();
+if (productTitle === "Legacy T-shirt" && selectedSize === "S" ) {
+                outOfStockMessageS.show();
 		 limitedStockMessage.hide();
 
                 addToCartButton.prop('disabled', true);
+	else if (productTitle === "Legacy T-shirt" && selectedSize === "M" ) {
+	                outOfStockMessageM.show();
+		 limitedStockMessage.hide();
+
+                addToCartButton.prop('disabled', true);
+	}
             } else {
-                outOfStockMessage.hide();
+                outOfStockMessageM.hide();
+		outOfStockMessageL.hide();
+
 		limitedStockMessage.show();
                 addToCartButton.prop('disabled', false);
             }
