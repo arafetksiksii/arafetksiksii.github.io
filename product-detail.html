@@ -653,7 +653,7 @@ $(document).ready(function() {
 			})
 		});
 	</script>
-	<script>
+<script>
     $(document).ready(function() {
         function checkStock() {
             var selectedSize = $('.js-select2 option:selected').text();
@@ -665,23 +665,20 @@ $(document).ready(function() {
 
             if (productTitle === "Legacy T-shirt" && selectedSize === "S") {
                 outOfStockMessageS.show();
-		outOfStockMessageM.hide();
+                outOfStockMessageM.hide();
                 limitedStockMessage.hide();
                 addToCartButton.prop('disabled', true);
             } else if (productTitle === "Legacy T-shirt" && selectedSize === "M") {
                 outOfStockMessageM.show();
-		outOfStockMessageS.hide();
+                outOfStockMessageS.hide();
                 limitedStockMessage.hide();
                 addToCartButton.prop('disabled', true);
-            
-	    }
-		  } else if (productTitle === "Vintage T-shirt" && selectedSize === "M") {
+            } else if (productTitle === "Vintage T-shirt" && selectedSize === "M") {
                 outOfStockMessageM.show();
-		outOfStockMessageS.hide();
+                outOfStockMessageS.hide();
                 limitedStockMessage.hide();
                 addToCartButton.prop('disabled', true);
-            }     
-	    else {
+            } else {
                 outOfStockMessageS.hide();
                 outOfStockMessageM.hide();
                 limitedStockMessage.show();
