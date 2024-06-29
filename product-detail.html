@@ -673,7 +673,15 @@ $(document).ready(function() {
 		outOfStockMessageS.hide();
                 limitedStockMessage.hide();
                 addToCartButton.prop('disabled', true);
-            } else {
+            
+	    }
+		  } else if (productTitle === "Vintage T-shirt" && selectedSize === "M") {
+                outOfStockMessageM.show();
+		outOfStockMessageS.hide();
+                limitedStockMessage.hide();
+                addToCartButton.prop('disabled', true);
+            }     
+	    else {
                 outOfStockMessageS.hide();
                 outOfStockMessageM.hide();
                 limitedStockMessage.show();
