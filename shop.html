@@ -226,10 +226,13 @@
     }
 
     .product-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Two columns */
-        gap: 0px; /* Space between products */
-    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 0px; /* Reduced space between products */
+    justify-items: center; /* Center align products within the grid */
+    align-items: start; /* Align items at the start of their grid cells */
+}
+
 
     .product {
         width: 100%; /* Make the product take full width */
@@ -237,18 +240,18 @@
     }
 
     .product img {
-        height: 130px; /* Smaller product images */
+        height: 100px; /* Smaller product images */
     }
 
     .product-title {
-        font-size: 13px; /* Smaller title font size */
+        font-size: 12px; /* Smaller title font size */
         margin-left: 0; /* Remove left margin for better alignment */
         margin-bottom: 0px;
         text-align: center; /* Center the product title */
     }
 
     .product-price {
-        font-size: 20px; /* Smaller price font size */
+        font-size: 18px; /* Smaller price font size */
         margin-top: 10px;
     }
 
