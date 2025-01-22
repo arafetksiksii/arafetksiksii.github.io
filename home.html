@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGGY</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+        .frame-container {
+            position: relative;
+            background: url('images/frame_pc.png') no-repeat center center;
+            background-size: 100% 100%;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+.footer_class {
+    display: none;
+}
+        /* Add the video as background */
+        .frame-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content-container {
+            width: 1200px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .window-box {
+            background: url('images/window_home_pc.png') no-repeat center center;
+            background-size: contain;
+            width: 80%;
+            height: 70%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            padding: 40px; /* Add padding to keep icons away from the box edge */
+
+        }
+        .icon-item {
+            text-align: center;
+            margin: 20px;
+            flex-basis: 45%;
+        }
+        .icon-item img {
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .icon-item img.icon {
+            width: 90px;
+            margin-top: 0px;
+        }
+
+        /* New glitch animation without movement */
+        @keyframes glitchy-blink {
+            0% {
+                opacity: 1;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            40% {
+                opacity: 0.5;
+            }
+            60% {
+                opacity: 0.3;
+            }
+            80% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Apply glitchy-blink to specific images */
+        .blinking-glitch {
+            animation: glitchy-blink 1.5s infinite;
+        }
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+    .frame-container {
+        background: url('images/frame_phone.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .footer_class {
+    display: block;
+}
+    .window-box {
+        background: url('images/window_home_phone.png') no-repeat center center;
+        background-size: contain;
+        width: 100%;  /* Make the box take up full width */
+        height: 45vh; /* Make the box take up more height */
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping of items into multiple lines */
+        justify-content: center;
+        align-items: center;
+        padding: 40px; /* Add padding to keep icons away from the box edge */
+        margin-bottom: 25px;
+    }
+
+    .content-container {
+        width: 90vw;
+        height: auto;
+        padding: 10px;
+        font-size: 0.7em; /* Decrease text size */
+    }
+
+    .icon-item {
+        flex-basis: 45%; /* Make icons smaller and allow two per row */
+        margin: 5px;  /* Reduce margin between icons */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-item img.icon {
+        width: 70px; /* Increase icon size to fit larger box */
+    }
+
+    /* Shrink the header text */
+    .content-container img {
+        width: 80px;
+    }
+
+    /* Shrink the footer text */
+    .content-container img[src="images/jiggy_logo_white.png"] {
+        width: 50px;
+    }
+
+    .content-container img[src="images/NO AFFILIATION.png"] {
+        width: 100px;
+    }
+}
+
+ /* Loader styles */
+ .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+        /* Hide loader when the page is loaded */
+        body.loaded .loader-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+     <!-- Loader -->
+     <div class="loader-container">
+        <img src="images/loading.gif" alt="Loading">
+    </div>   
+    <div class="frame-container">
+        <!-- Background Video -->
+        <video autoplay muted loop>
+            <source src="images/glitch_background.webm" type="video/mp4">
+        </video>
+
+        <div class="content-container">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="images/jiggy_text_white.png" alt="Jiggy Text" style="width: 170px; height: auto;">
+            </div>
+
+    <!-- Rectangle box -->
+<div class="window-box">
+    <!-- Shop Icon and Text -->
+    <div class="icon-item">
+        <a href="/shop">
+            <img src="images/Shop_icon.png" alt="Shop Icon" class="icon">
+            <img src="images/Shop.png" alt="Shop Text" class="blinking-glitch">
+        </a>
+    </div>
+
+    <!-- Gallery Icon and Text -->
+    <div class="icon-item">
+        <a href="/gallery">
+            <img src="images/Gallery_icon.png" alt="Gallery Icon" class="icon">
+            <img src="images/Gallery.png" alt="Gallery Text" class="blinking-glitch">
+        </a>
+    </div>
+
+    <!-- About Icon and Text -->
+    <div class="icon-item">
+        <a href="/about">
+            <img src="images/About_icon.png" alt="About Icon" class="icon">
+            <img src="images/About.png" alt="About Text" class="blinking-glitch">
+        </a>
+    </div>
+
+    <!-- Contact Icon and Text -->
+    <div class="icon-item">
+        <a href="/contact">
+            <img src="images/Contact_icon.png" alt="Contact Icon" class="icon">
+            <img src="images/Contact.png" alt="Contact Text" class="blinking-glitch">
+        </a>
+    </div>
+</div>
+
+
+            <!-- Footer -->
+             <div class="footer_class">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="images/jiggy_logo_white.png" alt="Jiggy Logo" style="width: 65px; height: auto;">
+            </div>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="images/NO AFFILIATION.png" alt="No Affiliation" style="width: 150px; height: auto;">
+            </div>
+        </div>
+        </div>
+    </div>
+    <script>
+        // Remove the loader after the page is fully loaded
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
+    
+</body>
+</html>

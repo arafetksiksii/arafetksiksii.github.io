@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGGY</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        /* General container settings */
+        .frame-container {
+            position: relative;
+            background: url('images/frame_pc.png') no-repeat center center;
+            background-size: 100% 100%;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+        /* Background video */
+        .frame-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Header with logo */
+        .header {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .header img {
+            width: 200px;
+        }
+
+        /* Back arrow styling */
+        .back-arrow {
+            position: absolute;
+            top: 80px;
+            left: 30px;
+            cursor: pointer;
+        }
+        .back-arrow2 {
+            position: absolute;
+            top: 80px;
+            left: 30px;
+            cursor: pointer;
+        }
+
+        /* Gallery window box */
+        .gallery-container {
+            background: url('images/window_home_pc.png') no-repeat center center;
+            background-size: contain;
+            width: 80%;
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: 40px;
+        }
+
+        /* Gallery images container */
+        /* Gallery images container */
+.gallery-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+/* Gallery image styling */
+.gallery-images img {
+    width: 100%;  /* Make the image fill the entire width of the container */
+    height: 100%; /* Make the image fill the entire height of the container */
+    object-fit: cover;  /* Ensure the image covers the container without distortion */
+    display: none;
+}
+
+
+/* Navigation Arrows */
+.arrows-container {
+    position: absolute;
+    bottom: 150px;  /* Adjust the distance from the bottom */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;  /* Ensure the arrows appear above other content */
+}
+.no-affiliation img {
+            display: none;
+        }
+
+        .arrow-left, .arrow-right {
+            cursor: pointer;
+        }
+
+        .arrow-left img, .arrow-right img {
+            width: 130px;
+            height: 130px;
+        }
+
+        /* Hidden state for arrows when there are no images to move in that direction */
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Loader styles */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Hide loader when the page is loaded */
+        body.loaded .loader-container {
+            display: none;
+        }
+        /* Adjustments for mobile */
+@media (max-width: 768px) {
+    .frame-container {
+        background: url('images/frame_phone.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .no-affiliation  {
+         padding-top: 0px;
+        }
+    .no-affiliation img {
+            display: block;
+        }
+
+    .back-arrow {
+            position: absolute;
+            top: 170px;
+            left: 50px;
+            cursor: pointer;
+        }
+        .back-arrow2 {
+            position: absolute;
+            top: 170px;
+            left: 110px;
+            cursor: pointer;
+        }
+        .gallery-container {
+            background: url('images/window_home_phone.png') no-repeat center center;
+            background-size: contain;
+            width: 75%;
+            height: 75%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: 0px;         }
+        .gallery-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35%;
+    position: relative;
+}
+
+/* Gallery image styling */
+.gallery-images img {
+    width: 100%;  /* Make the image fill the entire width of the container */
+    height: 100%; /* Make the image fill the entire height of the container */
+    object-fit: cover;  /* Ensure the image covers the container without distortion */
+    display: none;
+}
+.header {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .header img {
+            width: 120px;
+        }
+        .arrows-container {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 140px;
+    bottom: 25px ;
+    padding: 0 0px;
+    z-index: 2;  /* Ensure the arrows appear above other content */
+}
+
+
+        .arrow-left, .arrow-right {
+            cursor: pointer;
+        }
+
+        .arrow-left img, .arrow-right img {
+            width: 60px;
+            height: 60px;
+        }
+}
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-container">
+        <img src="images/loading.gif" alt="Loading">
+    </div>
+
+    <div class="frame-container">
+        <video autoplay muted loop>
+            <source src="images/glitch_background.webm" type="video/mp4">
+        </video>
+        <!-- Header with Logo -->
+        <div class="header">
+            <img src="images/jiggy_text_white.png" alt="JIGGY Logo">
+        </div>
+
+<!-- Back Arrow -->
+<div class="no-affiliation" style="display: flex; justify-content: flex-start; align-items: center; margin-top: 20px;">
+    <a href="/home" class="back-arrow">
+        <img src="images/icon_arrow_left.png" alt="Go Back" style="margin-right: 10px;">
+    </a>
+    <img class="back-arrow2" src="images/Gallery2.png" alt="Gallery">
+</div>
+
+        
+
+        <!-- Gallery Window -->
+        <div class="gallery-container">
+            <!-- Gallery Images -->
+            <div class="gallery-images">
+                <img src="images/product1.png" alt="Product 1" class="gallery-image">
+                <img src="images/product2.png" alt="Product 2" class="gallery-image">
+                <img src="images/product3.png" alt="Product 3" class="gallery-image">
+                <img src="images/product4.png" alt="Product 4" class="gallery-image">
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="arrows-container">
+                <div class="arrow-left disabled">
+                    <img src="images/Left2.png" alt="Left Arrow">
+                </div>
+                <div class="arrow-right">
+                    <img src="images/Right1.png" alt="Right Arrow">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+
+        // Gallery navigation logic
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.gallery-image');
+        const leftArrow = document.querySelector('.arrow-left');
+        const rightArrow = document.querySelector('.arrow-right');
+
+        // Function to update image visibility
+        function updateGallery() {
+            images.forEach((img, index) => {
+                img.style.display = index === currentIndex ? 'block' : 'none';
+            });
+
+            // Disable left arrow if on first image
+            leftArrow.classList.toggle('disabled', currentIndex === 0);
+
+            // Disable right arrow if on last image
+            rightArrow.classList.toggle('disabled', currentIndex === images.length - 1);
+
+            // Update arrow images based on navigation
+            leftArrow.querySelector('img').src = currentIndex === 0 ? 'images/Left2.png' : 'images/Left1.png';
+            rightArrow.querySelector('img').src = currentIndex === images.length - 1 ? 'images/Right2.png' : 'images/Right1.png';
+        }
+
+        // Left arrow click event
+        leftArrow.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateGallery();
+            }
+        });
+
+        // Right arrow click event
+        rightArrow.addEventListener('click', () => {
+            if (currentIndex < images.length - 1) {
+                currentIndex++;
+                updateGallery();
+            }
+        });
+
+        // Initialize gallery
+        updateGallery();
+    </script>
+</body>
+</html>

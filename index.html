@@ -1,267 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
-  <meta name="description" content="" />
-  <meta name="keywords" content="bootstrap, bootstrap4" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGGY</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="css/tiny-slider.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <title>JIGGY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
 
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: auto;
-    }
-    .press-start-2p-regular {
-  font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-    .permanent-marker-regular {
-      font-family: "inter", cursive;
-      font-weight: 400;
-      font-style: normal;
-    }
+        .frame-container {
+            position: relative;
+            background: url('images/frame_pc.png') no-repeat center center;
+            background-size: 100% 100%;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .frame-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
 
-    .video-container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: auto;
-    }
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .header-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 999;
-    }
-    .navbar-brand {
-      color: #fff;
-      text-decoration: none;
-      font-size: 24px;
-    }
-    .navbar-brand span {
-      font-size: 32px;
-      font-weight: bold;
-    }
-    .cart-icon img {
-      width: 30px;
-      height: auto;
-    }
-    .menu {
-      position: absolute;
-      bottom: 100px;
-      left: 20px;
-      z-index: 999;
-      color: #fff;
-      font-family: 'inter', sans-serif;
-    }
-    .menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .menu li {
-      margin-bottom: 10px;
-    }
-    .menu li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 24px;
-      font-family: 'inter';
-      font-weight: 400;
-      font-style: normal;
-      transition: color 0.3s ease;
-    }
-    .menu li a:hover {
-      color: black;
-    }
-    .shop-link {
-  position: absolute;
-  bottom: 170px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: "Press Start 2P", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 50px; 
+        .content-container {
+            width: 1200px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .image-container img {
+            width: 50px;
+            height: auto;
+            margin: 0 10px;
+        }
+
+        .vertical-images-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image1 { width: 300px; height: auto; margin-bottom: 40px; margin-top: 50px; }
+        .image2 { width: 200px; height: auto; margin-bottom: 40px; }
+        .image3 { width: 100px; height: auto; }
+        .image4 { width: 130px; height: auto; }
+
+        @keyframes glitchy-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .blinking-glitch {
+            animation: glitchy-blink 1.5s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .frame-container {
+                background: url('images/frame_phone.png') no-repeat center center;
+                background-size: 100% 100%;
+            }
+        }
+
+        /* Loader styles */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-    .shop-link a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .shop-link a:hover {
-      color: black;
-    }
-    /* Media query for small screens */
-/* Media query for small screens */
-@media (max-width: 768px) {
-  .shop-link-wrapper {
-    position: absolute;
-    bottom: 0px; /* Adjust the positioning as needed */
-    right: 100px; /* Adjust the positioning as needed */
-    transform: translateX(-50%);
-  }
-
-  .shop-link {
-    font-size: 24px; /* Adjust the font size as needed */
-  }
-}
-
-
-    /* New styles for social icons */
-    .social-icons {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-    .social-icons a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 24px;
-      margin-left: 10px;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: black;
-    } 
-    .navbar-brand img {
-    height: 50px; /* Adjust the height as needed */
-    width: auto;  /* Keeps the aspect ratio */
-}
-.navbar-brand .brand-image {
-  transition: all 0.3s ease; /* Smooth transition */
-}
-
-.navbar-brand:hover .brand-image {
-  content: url('jiggyp.png');
-}
-.nav-link .cart-image {
-  transition: all 0.3s ease; /* Smooth transition */
-}
-
-.nav-link:hover .cart-image {
-  content: url('images/cartp.png');
-}
-.loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #fff; /* Background color of the loader */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Ensure it's above other content */
-}
-
-
-
-  </style>
+        /* Hide loader when the page is loaded */
+        body.loaded .loader-container {
+            display: none;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="loader-wrapper">
-    <img class="loader" src="jiggylogo.gif" alt="Loading...">
-  </div>
-  
-  
-  <!-- Start Video Section -->
-  <div class="video-container">
-    <video autoplay muted loop id="video-background" preload="auto">
-      <source src="teaser_video.webm" type="video/webm">
-      Your browser does not support the video tag.
-    </video>
-
-    <!-- Start Header Overlay -->
-    <div class="header-overlay">
-      <a class="navbar-brand" href="index.html">
-        <img class="brand-image" src="jiggy.png" alt="Brand Image">
-      </a>
-            <div class="cart-icon">
-              <a class="nav-link" href="cart.html">
-                <img class="cart-image" src="images/cart.png" alt="Cart Image">
-              </a>
-                    </div>
+    <!-- Loader -->
+    <div class="loader-container">
+        <img src="images/loading.gif" alt="Loading">
     </div>
-    <!-- End Header Overlay -->
 
-    <!-- Start Menu -->
-    <div class="menu">
-      <ul>
-        <li><a href="shop.html">PRODUCTS</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-
-      </ul>
+    <!-- Main content -->
+    <div class="frame-container">
+        <video autoplay muted loop>
+            <source src="images/glitch_background.webm" type="video/mp4">
+        </video>
+        <div class="content-container">
+            <div class="image-container">
+                <img src="images/heart.png" alt="Heart" class="blinking-glitch">
+                <img src="images/heart.png" alt="Heart" class="blinking-glitch">
+                <img src="images/half_heart.png" alt="Half Heart" class="blinking-glitch">
+            </div>
+            <div class="vertical-images-container">
+                <img src="images/jiggy_text_white.png" alt="Jiggy Text" class="image1">
+                <a href="/home">
+                    <img src="images/PRESS START.png" alt="Press Start" class="image2 blinking-glitch">
+                </a>
+                <img src="images/jiggy_logo_white.png" alt="Jiggy Logo" class="image3">
+                <img src="images/NO AFFILIATION.png" alt="No Affiliation" class="image4">
+            </div>
+        </div>
     </div>
-    <!-- End Menu -->
 
-<!-- Move the shop link inside a new div with the class "shop-link-wrapper" -->
-<div class="shop-link-wrapper">
-  <!-- Start Shop Link -->
-  <div class="shop-link">
-    <a href="shop.html">SHOP</a>
-  </div>
-  <!-- End Shop Link -->
-</div>
-
-
-    <!-- Social Icons -->
-    <div class="social-icons">
-      <a href="https://www.instagram.com/jiggy.atw?igsh=cnR0NnhsaXl1ZjFr"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@jiggy.atw?_t=8mVVGAOFpf4&_r=1"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <!-- End Social Icons -->
-  </div>
-  <!-- End Video Section -->
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPE9NLM06S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SPE9NLM06S');
-</script>
-<script>
-window.addEventListener("load", function() {
-  var loader = document.querySelector(".loader-wrapper");
-  loader.style.display = "none";
-});
-</script>
+    <script>
+        // Remove the loader after the page is fully loaded
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
 </body>
 </html>

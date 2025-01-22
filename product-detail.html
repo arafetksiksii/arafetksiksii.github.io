@@ -1,705 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>JIGGY</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="favicon.png"/>
-    <link rel="shortcut icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGGY</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Permanent+Marker&family=Signika+Negative:wght@300..700&family=Teko:wght@300..700&display=swap" rel="stylesheet">
-<style>
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  /* Remove overflow: auto; */
-  overflow: auto; /* Add overflow: auto; to enable scrolling */
+    <style>
+        @font-face {
+    font-family: 'Minecraft';
+    src: url('fonts/Minecraft.ttf') format('truetype'); /* Adjust the path if necessary */
 }
 
-    .permanent-marker-regular {
-      font-family: "inter", cursive;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .header-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 999;
-    }
-    .navbar-brand {
-      color: black; /* Changed to black */
-      text-decoration: none;
-      font-size: 24px;
-    }
-    .navbar-brand span {
-      font-size: 32px;
-      font-weight: bold;
-    }
-    .cart-icon img {
-      width: 30px;
-      height: auto;
-    }
-    .menu {
-      position: absolute;
-      bottom: 100px;
-      left: 20px;
-      z-index: 999;
-      color: black; /* Changed to black */
-      font-family: 'inter', sans-serif;
-    }
-    .menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .menu li {
-      margin-bottom: 10px;
-    }
-    .menu li a {
-      color: black; /* Changed to black */
-      text-decoration: none;
-      font-size: 24px;
-      /* Apply the jersey-15-regular class here */
-      font-family: 'inter', sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      transition: color 0.3s ease;
-    }
-    .menu li a:hover {
-      color: gray; /* Changed hover color to yellow */
-    }
-/* Media query for small screens */
-@media (max-width: 768px) {
-  .menu-wrapper {
-    display: none; /* Hide the menu wrapper */
-  }
-  .slick3 .wrap-pic-w img {
-    width: 100%; /* Make the image take full width */
-    height: auto; /* Maintain aspect ratio */
-  }
-  .sec-product-detail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .sec-product-detail .container {
-    max-width: 100%;
-    padding: 0;
-  }
-  .wrap-slick3 {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  .col-md-6,
-  .col-lg-7,
-  .col-lg-5 {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  #product-image3 {
-    display: none; /* Hide the third image */
-  }
-.slick3 .wrap-pic-w:nth-child(3) { display: none; }
-
-  .slick3 .wrap-pic-w {
-    justify-content: center;
-  }
-  .p-r-50, .p-lr-0-lg {
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-  }
-  .p-t-5 {
-    padding-top: 5px !important;
-  }
-  .p-t-33 {
-    padding-top: 33px !important;
-  }
-  .p-b-30 {
-    padding-bottom: 30px !important;
-  }
-  .mtext-105, .mtext-106, .stext-102 {
-    text-align: center !important;
-  }
-  .p-t-23 {
-    padding-top: 23px !important;
-  }
-  .flex-w, .flex-r-m, .flex-c-m {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .mtext-106 {
-    display: flex;
-    justify-content: center;
-  }
-  .dimensions-link {
-    display: flex;
-    justify-content: center;}
-  .materials-link {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-
-    /* Styles for the product section */
-    .product-section {
-      padding: 20px;
-      box-sizing: border-box;
-      overflow-y: auto; /* Enable scrolling if content overflows vertically */
-      position: absolute;
-      top: 100px;
-      right: 20px;
-      bottom: 20px;
-      left: 250px; /* Adjust the left position to create space for the menu */
-    }
-    .product-section .container {
-      max-width: 100%;
-    }
-    .product-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      
-      margin-bottom: 30px;
-    }
-    .product-thumbnail {
-      width: 100%;
-      max-width: 200px;
-      height: auto;
-      margin-bottom: 10px;
-    }
-    .product-title {
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-	.product-description {
-      font-size: 12px;
-      margin-bottom: 5px;
-    }
-    .product-price {
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .icon-cross {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-    .icon-cross img {
-      width: 20px;
-      height: auto;
-    }
-	    /* New styles for social icons */
-		.social-icons {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-    .social-icons a {
-      color: black;
-      text-decoration: none;
-      font-size: 24px;
-      margin-left: 10px;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: gray;
-    }
-	.navbar-brand img {
-    height: 50px; /* Adjust the height as needed */
-    width: auto;  /* Keeps the aspect ratio */
-}
-/* Default state */
-.bg-black {
-    background-color: black;
-    color: white; /* Adding this to ensure text is visible */
-}
-
-/* Hover state */
-.bg-black:hover {
-    background-color: gray;
-}
-
-
-
-.dimensions-link,
-.materials-link {
-    color: #0366d6; /* Adjust the color as needed */
-    text-decoration: underline black;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-.dimensions-link {
-    text-decoration: underline black; /* Set the text decoration color to black */
-}
-
-.dimensions-link:hover,
-.materials-link:hover {
-    color: #0645ad; /* Adjust the hover color as needed */
-}
-
-.loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #fff; /* Background color of the loader */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Ensure it's above other content */
-}
-.sec-product-detail {
-  padding-left: 0; /* Adjust the value as needed */
-  
-}
-
-
-
-  </style>
-</head>
-<body class="animsition">
-	
-	  <!-- Start Header Overlay -->
-	  <div class="header-overlay">
-		<a class="navbar-brand" href="index.html"><img src="jiggyp.png" alt="Brand Image"></a>
-		<div class="cart-icon">
-		  <a class="nav-link" href="cart.html"><img src="images/cartp.png"></a>
-		</div>
-	  </div>
-	  <!-- End Header Overlay -->
-	<!-- Move the menu inside a new div with the class "menu-wrapper" -->
-<div class="menu-wrapper">
-  <!-- Start Menu -->
-  <div class="menu">
-    <ul>
-      <li><a href="shop.html">PRODUCTS</a></li>
-      <li><a href="contact.html">CONTACT</a></li>
-      <li><a href="about.html">ABOUT</a></li>
-    </ul>
-  </div>
-  <!-- End Menu -->
-</div>
-
-	
-
-		
-
-	<!-- Product Detail -->
-<br><br>
-<section class="sec-product-detail bg0 p-t-65 p-b-60">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-7 p-b-30">
-                <div class="p-l-25 p-r-30 p-lr-0-lg">
-                    <div class="wrap-slick3 flex-sb flex-w">
-                        
-                        <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-                        <div class="slick3 gallery-lb">
-                                <div class="wrap-pic-w pos-relative">
-                                    <img id="product-image" src="" alt="Product Image">
-
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" id="product-image-link" href="#">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            
-
-                                <div class="wrap-pic-w pos-relative">
-                                    <img id="product-image2" src="" alt="Product Image" >
-
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" id="product-image-link2" href="#">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            
-
-                                <div class="wrap-pic-w pos-relative">
-                                    <img id="product-image3" src="" alt="Product Image" style="width: 420px; height: 400px;">
-
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" id="product-image-link3" href="#">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-5 p-b-30">
-                <div class="p-r-50 p-t-5 p-lr-0-lg">
-                    <h4 id="product-title" class="mtext-105 cl2 js-name-detail p-b-14">
-
-                    </h4>
-
-
-                    <span id="product-price" class="mtext-106 cl2">
-
-                    </span>
-
-
-                    <p id="product-description" class="stext-102 cl3 p-t-23">
-                        Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
-                    </p>
-
-                    <!--  -->
-                    <div class="p-t-33">
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-203 flex-c-m respon6">
-                                Size
-                            </div>
-                            <br>
-                            <div class="size-204 respon6-next">
-                                <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time">
-					<option>XL</option>
-					 <option>L</option>
-                                        <option>M</option>
-					  <option>S</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-
-
-                                </div>
-				<p id="limited-stock-message" style="color: red; display: none;">  ONLY A FEW ITEMS LEFT </p>
-
-				<p id="out-of-stock-messageS" style="color: red; display: none;"> SIZE S IS OUT OF STOCK</p>
-				<p id="out-of-stock-messageM" style="color: red; display: none;"> SIZE M IS OUT OF STOCK </p>
-
-                            </div>
-
-                            <br>
-
-                        </div>
-
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-204 flex-w flex-m respon6-next">
-                                <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-minus"></i>
-                                    </div>
-                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-plus"></i>
-                                    </div>
-                                </div>
-                                <button class="flex-c-m stext-101 cl0 size-101 bg-black bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    Add to bag
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Move these sections here -->
-                        <div class="wrap-dimensions-materials">
-                            <div class="product-details mtext-102 cl3 p-t-23">
-                                <p class="m-b-5">
-
-                                    <a href="javascript:void(0)" onclick="toggleDimensions()" class="dimensions-link">
-                                        <strong style="color: black;">DIMENSIONS</strong>
-                                    </a>
-                                </p>
-                                <div id="product-dimensions" style="display: none;">
-                                    <!-- Content for dimensions goes here -->
-                                    <img src="dimensions_image.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="product-details mtext-102 cl3 p-t-23">
-                                <p class="m-b-5">
-                                    <a href="javascript:void(0)" onclick="toggleMaterials()" class="materials-link">
-                                        <strong style="color: black;">MATERIALS</strong>
-
-                                    </a>
-                                </p>
-                                <div id="product-materials" style="display: none;">
-                                    <!-- Content for materials goes here -->
-                                    <p>Materials content goes here...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of moved sections -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-	
-	<script>
-		function toggleDimensions() {
-			var dimensionsDiv = document.getElementById("product-dimensions");
-			if (dimensionsDiv.style.display === "none") {
-				dimensionsDiv.style.display = "block";
-			} else {
-				dimensionsDiv.style.display = "none";
-			}
-		}
-	
-		function toggleMaterials() {
-			var materialsDiv = document.getElementById("product-materials");
-			if (materialsDiv.style.display === "none") {
-				materialsDiv.style.display = "block";
-			} else {
-				materialsDiv.style.display = "none";
-			}
-		}
-	</script>
-
-	<script>
-		// Parse the product ID from the URL
-		const urlParams = new URLSearchParams(window.location.search);
-		const productId = urlParams.get('id');
-	
-		// Make AJAX request to fetch product details
-		fetch(`https://jiggy-back-f6020cdcad45.herokuapp.com/produit/detail/${productId}`)
-    .then(response => response.json())
-    .then(data => {
-        // Populate HTML elements with fetched product details
-        document.getElementById('product-image').src = data.image;
-        document.getElementById('product-image2').src = data.image2;
-        document.getElementById('product-image3').src = data.image3;
-
-        // Set the href attribute of product-image-link to data.image
-        document.getElementById('product-image-link').setAttribute('href', data.image);
-        document.getElementById('product-image-link2').setAttribute('href', data.image2);
-        document.getElementById('product-image-link3').setAttribute('href', data.image3);
-
-
-        document.getElementById('product-title').innerText = data.title;
-        document.getElementById('product-price').innerText = `${data.price} TND`;
-        document.getElementById('product-description').innerText = data.description;
-		if (data.dimensions) {
-    const dimensionsContainer = document.getElementById('product-dimensions');
-    const dimensionsImage = document.createElement('img');
-    dimensionsImage.src = data.dimensions;
-    dimensionsImage.alt = 'Dimensions Image';
-    dimensionsContainer.appendChild(dimensionsImage);
-}document.getElementById('product-materials').innerText = data.materials;
-    })
-    .catch(error => console.error('Error fetching product details:', error));
-
-
-
-	</script>
-
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-	<script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-		
-	</script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/slick/slick.min.js"></script>
-	<script src="js/slick-custom.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/parallax100/parallax100.js"></script>
-	<script>
-        $('.parallax100').parallax100();
-	</script>
-<!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-	<script>
-		$('.gallery-lb').each(function() { // the containers for all your galleries
-			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/sweetalert/sweetalert.min.js"></script>
-<!-- Add this function before the script section -->
-<script>
-function addToCart(productId, productName, productPrice, quantity, PRODUCTSize, productImage) {
-    // Get the existing cart items from local storage
-    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Check if the product is already in the cart
-    let existingProductIndex = cartItems.findIndex(item => item.productName === productName && item.size === PRODUCTSize);
-
-    if (existingProductIndex !== -1) {
-        // Update the quantity if the product is already in the cart with the same size
-        cartItems[existingProductIndex].quantity += quantity;
-    } else {
-        // Add the product to the cart if it's not already in the cart
-        cartItems.push({
-            productId: productId,
-            productName: productName,
-            productPrice: productPrice,
-            quantity: quantity,
-            size: PRODUCTSize, // Add product size to cart item
-            image: productImage // Add product image to cart item
-        });
-    }
-
-    // Store the updated cart items in local storage
-    localStorage.setItem('cart', JSON.stringify(cartItems));
-}
-
-
-</script>
-
-<!-- Update the click event handler for the "Add to cart" button -->
-<script>
-$(document).ready(function() {
-    $('.js-addcart-detail').on('click', function() {
-        var productId = $(this).data('product-id'); // Assuming you have a data-product-id attribute on the button
-        var productName = $(this).closest('.sec-product-detail').find('#product-title').html().trim();
-		var description = $(this).closest('.sec-product-detail').find('#product-description').html().trim();
-        var productPrice = parseFloat($(this).closest('.sec-product-detail').find('#product-price').text().replace('$', ''));
-        var quantity = parseInt($(this).closest('.sec-product-detail').find('.num-product').val());
-        var PRODUCTSize = $(this).closest('.sec-product-detail').find('.js-select2 option:selected').text(); // Get selected size from dropdown
-        var productImage = $(this).closest('.sec-product-detail').find('#product-image').attr('src'); // Get product image source
-
-        addToCart(productId, productName, productPrice, quantity, PRODUCTSize, productImage);
-        swal(productName, "is added to cart !", "success");
-    });
-});
-</script>
-<!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
-				scrollingThreshold: 1000,
-				wheelPropagation: false,
-			});
-
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
-	</script>
-<script>
-    $(document).ready(function() {
-        function checkStock() {
-            var selectedSize = $('.js-select2 option:selected').text();
-            var productTitle = $('#product-title').text().trim();
-            var addToCartButton = $('.js-addcart-detail');
-            var outOfStockMessageS = $('#out-of-stock-messageS');
-            var outOfStockMessageM = $('#out-of-stock-messageM');
-            var limitedStockMessage = $('#limited-stock-message');
-
-            if (productTitle === "Legacy T-shirt" && selectedSize === "S") {
-                outOfStockMessageS.show();
-                outOfStockMessageM.hide();
-                limitedStockMessage.hide();
-                addToCartButton.prop('disabled', true);
-            } else if (productTitle === "Legacy T-shirt" && selectedSize === "M") {
-                outOfStockMessageM.show();
-                outOfStockMessageS.hide();
-                limitedStockMessage.hide();
-                addToCartButton.prop('disabled', true);
-            } else if (productTitle === "Vintage T-shirt" && selectedSize === "M") {
-                outOfStockMessageM.show();
-                outOfStockMessageS.hide();
-                limitedStockMessage.hide();
-                addToCartButton.prop('disabled', true);
-            } else {
-                outOfStockMessageS.hide();
-                outOfStockMessageM.hide();
-                limitedStockMessage.show();
-                addToCartButton.prop('disabled', false);
-            }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            font-family: 'Minecraft', sans-serif; /* Applying Minecraft font */
         }
 
-        // Run the check on page load and when the size selection changes
-        checkStock();
-        $('.js-select2').on('change', checkStock);
-    });
-</script>
+        .frame-container {
+    position: relative;
+    background: url('images/frame_pc.png') no-repeat center center;
+    background-size: 100% 100%; /* Adjusted for full coverage */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.no-affiliation img {
+            display: none;
+        }
+        .frame-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .header {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0px;
+        }
+
+        .header .logo {
+            height: 40px;
+            margin-bottom: 0px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            width: 93%;
+            margin-top: 20px;
+        }
+
+        .navigation img {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            margin-top: 0px;
+        }
+
+        .product-details img.product-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 0px;
+        }
+
+        .product-title,
+         .product-price {
+            font-size: 1.2rem;
+            color: white;
+            margin: 10px 0;
+        }
+
+        .size-options, .color-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 0px;
+        }
+
+        .size-options img, .color-options img {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .size-options img.selected, .color-options img.selected {
+            border-color: #000000;
+        }
+
+.quantity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 2px solid #333;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.quantity-container button {
+    padding: 6px 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: white;
+    background-color: #444;
+    border: 2px solid #555;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.quantity-container button:hover {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.quantity-container button:active {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+#quantity {
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bold;
+    margin: 0 8px;
+    min-width: 30px;
+    text-align: center;
+}
 
 
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-  <script>
-    window.addEventListener("load", function() {
-      var loader = document.querySelector(".loader-wrapper");
-      loader.style.display = "none";
+        .add-to-cart-btn img {
+            width: 250px;
+            cursor: pointer;
+        }
+
+        .add-to-cart-btn img.selected {
+            width: 210px;
+        }
+
+        /* Loader styles */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body.loaded .loader-container {
+            display: none;
+        }
+        @media (max-width: 768px) { 
+            .header .logo {
+        margin-top: -55px; /* Moves the logo 25px upwards on small screens */
+    }
+    .no-affiliation img {
+            display: block;
+
+        }
+    .navigation {
+            display: flex;
+            justify-content: space-between;
+            width: 83%;
+            margin-top: 20px;
+        }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-container">
+        <img src="images/loading.gif" alt="Loading">
+    </div>
+
+    <div class="frame-container">
+        <!-- Background Video -->
+        <video autoplay muted loop>
+            <source src="images/glitch_background.webm" type="video/mp4">
+        </video>
+        
+        <div class="header">
+            <img class="logo" src="images/jiggy_text_white.png" alt="JIGGY Logo">
+            <div class="navigation">
+                <img class="back-arrow" src="images/icon_arrow_left.png" alt="Back" onclick="location.href='/shop'">
+                <img class="cart" src="images/cart_empty.png" alt="Cart" onclick="location.href='/cart'">
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-details">
+            <!-- Product Image -->
+            <img id="product-image" class="product-image" src="images/product1.png" alt="Product">
+
+            <!-- Product Title and Price -->
+            <div id="product-title" class="product-title">Product Title</div>
+            <div id="product-price" class="product-price">$29.99</div>
+
+            <!-- Size Options -->
+<!-- Size Options -->
+<div id="size-options" class="size-options">
+    <img id="size-xs" class="size-option" src="images/XS1.png" alt="XS" data-available="true" onclick="changeSize('XS')">
+    <img id="size-s" class="size-option" src="images/S1.png" alt="S" data-available="true" onclick="changeSize('S')">
+    <img id="size-m" class="size-option" src="images/M1.png" alt="M" data-available="true" onclick="changeSize('M')">
+    <img id="size-l" class="size-option" src="images/L1.png" alt="L" data-available="true" onclick="changeSize('L')">
+    <img id="size-xl" class="size-option" src="images/XL1.png" alt="XL" data-available="true" onclick="changeSize('XL')">
+    <img id="size-2xl" class="size-option" src="images/2XL1.png" alt="2XL" data-available="true" onclick="changeSize('2XL')">
+</div>
+
+
+            <!-- Color Options -->
+            <div id="color-options" class="color-options">
+                <img id="color-grey" src="images/grey1.png" alt="Grey" onclick="changeColor('grey')">
+                <img id="color-black" src="images/black1.png" alt="Black" onclick="changeColor('black')">
+                <img id="color-pink" src="images/pink1.png" alt="Pink" onclick="changeColor('pink')">
+                <img id="color-lightpink" src="images/lightpink1.png" alt="Light Pink" onclick="changeColor('lightpink')">
+            </div>
+
+            <!-- Quantity Selector -->
+            <div class="quantity-container">
+                <button onclick="updateQuantity('decrease')">-</button>
+                <div id="quantity">1</div>
+                <button onclick="updateQuantity('increase')">+</button>
+            </div>
+
+            <!-- Add to Cart Button -->
+            <div class="add-to-cart-btn">
+                <img id="add-to-cart-btn" src="images/add-to-cart-btn1.png" alt="Add to Cart" onclick="changeCartButton()">
+            </div>
+        </div>
+                <!-- Additional images for small screens -->
+                <div class="no-affiliation" style="text-align: center; margin-top: 20px;">
+                    <img src="images/NO AFFILIATION.png" alt="No Affiliation">
+                </div>
+    </div>
+    <script>
+let selectedSize = null;
+let selectedColor = null;
+let selectedQuantity = 1;
+let haveSizes2 = null ;
+
+   // Get product ID from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('_id');
+
+// Fetch product details using the product ID
+fetch(`http://localhost:3000/products/${productId}`)
+    .then(response => response.json())
+    .then(productData => {
+        // Update product details
+        document.querySelector('.product-title').textContent = productData.title;
+        document.querySelector('.product-price').textContent = productData.price + ' TND';
+        document.getElementById('product-image').src = productData.image;
+
+        // Update size availability
+        updateSizeAvailability(productData);
+        selectedColor = productData.color
+        haveSizes2 = productData.haveSizes
+
+        // Fetch all products with the same name using POST request
+        fetch('http://localhost:3000/products/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title: productData.title }),
+        })
+            .then(response => response.json())
+            .then(colorVariants => {
+                // Update color options
+                updateColorOptions(colorVariants, productData.color);
+            })
+            .catch(error => {
+                console.error('Error fetching related products:', error);
+            });
+    })
+    .catch(error => {
+        console.error('Error fetching product details:', error);
+    });      
+    
+
+// Change size
+function changeSize(size) {
+    // Reset all size images to 1
+    document.querySelectorAll('.size-options img').forEach(img => {
+        img.src = img.src.replace('2.png', '1.png');
     });
+
+    // Change the selected size to 2
+    document.getElementById(`size-${size.toLowerCase()}`).src = document.getElementById(`size-${size.toLowerCase()}`).src.replace('1.png', '2.png');
+    selectedSize = size;
+
+}
+
+// Change color
+function changeColor(selectedVariant, colorVariants) {
+    // Update main image
+    document.getElementById('product-image').src = selectedVariant.image;
+
+    // Update selected color
+    colorVariants.forEach(variant => {
+        const colorElement = document.getElementById(`color-${variant.color}`);
+        const isSelected = variant.color === selectedVariant.color;
+
+        colorElement.src = `images/${variant.color}${isSelected ? '2' : '1'}.png`;
+        colorElement.classList.toggle('selected', isSelected);
+    });
+
+
+    // Update size availability based on the selected color
+    updateSizeAvailability(selectedVariant);
+
+}
+
+// Update quantity
+function updateQuantity(action) {
+    if (action === 'increase') {
+        selectedQuantity++;
+    } else if (action === 'decrease' && selectedQuantity > 1) {
+        selectedQuantity--;
+    }
+
+    document.getElementById('quantity').textContent = selectedQuantity;
+}
+
+// Add to Cart
+function changeCartButton() {
+   // Check if a size is selected
+   let selectedSize = ""; // Default value
+
+function addToCart(haveSizes) {
+    // Check if sizes are required and selected
+    if (haveSizes2 && !selectedSize) {
+        alert("Please select a size!");
+        return; // Stop further execution
+    }
+
+    // If sizes are not required, pass a blank space
+    if (!haveSizes2) {
+        selectedSize = " ";
+    }
+
+    // Proceed to add to cart
+    console.log(`Adding to cart with size: "${selectedSize}"`);
+    // Add your cart logic here
+}
+
+    
+    // Collect product details
+    const productDetails = {
+        image: document.getElementById('product-image').src,
+        title: document.getElementById('product-title').textContent,
+        price: parseFloat(document.getElementById('product-price').textContent.replace('TND', '').trim()),
+        size: selectedSize,
+        color: selectedColor,
+        quantity: selectedQuantity
+    };
+
+    // Store in local storage (or cart object)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartImage = document.querySelector('.cart');
+    cartImage.src = 'images/cart.png'; // Set the image to cart.png
+
+    cart.push(productDetails);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // You can add any further actions like changing button text, etc.
+    const cartButton = document.getElementById('add-to-cart-btn');
+    cartButton.src = 'images/add-to-cart-btn2.png';
+}
+
+      
+
+// Function to update size availability
+function updateSizeAvailability(selectedVariant) {
+    selectedColor = selectedVariant.color
+
+    const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', '2XL'];
+
+    sizeOptions.forEach(size => {
+        const sizeElement = document.getElementById(`size-${size.toLowerCase()}`);
+        const isAvailable = selectedVariant[`is${size}Available`];
+
+        // Check availability and update the image and button state
+        if (!isAvailable) {
+            sizeElement.src = sizeElement.src.replace('1.png', '3.png');  // Use the out-of-stock image
+            sizeElement.style.pointerEvents = 'none';  // Disable clicking
+        } else {
+            sizeElement.style.pointerEvents = 'auto';  // Enable clicking
+            sizeElement.src = sizeElement.src.replace('3.png', '1.png');  // Use the in-stock image
+        }
+    });
+}
+        
+       // Change size (updates the selected size image)
+
+// Change color and update product image (updates the selected color image)
+function updateColorOptions(colorVariants, currentColor) {
+    const colorContainer = document.querySelector('.color-options');
+    colorContainer.innerHTML = ''; // Clear existing colors
+
+    colorVariants.forEach(variant => {
+        const color = variant.color;
+        const colorImg = document.createElement('img');
+        const isSelected = color === currentColor;
+
+        colorImg.id = `color-${color}`;
+        colorImg.src = `images/${color}${isSelected ? '2' : '1'}.png`;
+        colorImg.alt = color.charAt(0).toUpperCase() + color.slice(1);
+        colorImg.classList.add('color-option');
+        if (isSelected) colorImg.classList.add('selected');
+
+        colorImg.onclick = () => changeColor(variant, colorVariants);
+
+        colorContainer.appendChild(colorImg);
+    });
+}
+
+// Function to change color
+function changeColor(selectedVariant, colorVariants) {
+    // Update main image
+    document.getElementById('product-image').src = selectedVariant.image;
+
+    // Update selected color
+    colorVariants.forEach(variant => {
+        const colorElement = document.getElementById(`color-${variant.color}`);
+        const isSelected = variant.color === selectedVariant.color;
+
+        colorElement.src = `images/${variant.color}${isSelected ? '2' : '1'}.png`;
+        colorElement.classList.toggle('selected', isSelected);
+    });
+
+    // Update size availability based on the selected color
+    updateSizeAvailability(selectedVariant);  // Make sure this is using the selected color's availability data
+}
+
+
+
+
+
+
+
+        // Remove the loader after the page is fully loaded
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
     </script>
+    <script>
+        // Check if cart exists in localStorage and is not empty
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Select the cart image element
+        const cartImage = document.querySelector('.cart');
+        
+        // Change the cart image if there are items in the cart
+        if (cart.length > 0) {
+            cartImage.src = 'images/cart.png'; // Set the image to cart.png
+        } else {
+            cartImage.src = 'images/cart_empty.png'; // Set the image to cart_empty.png
+        }
+        </script>
+        <script>
+            // Function to toggle size options based on `haveSizes` value
+            function updateSizeVisibility(haveSizes) {
+                const sizeOptions = document.getElementById('size-options');
+                if (!haveSizes) {
+                    sizeOptions.style.display = 'none';
+                } else {
+                    sizeOptions.style.display = 'flex'; // Ensure it remains visible if `haveSizes` is true
+                }
+            }
+        
+            // Assuming the `productData` object has been fetched already
+            fetch(`http://localhost:3000/products/${productId}`)
+                .then(response => response.json())
+                .then(productData => {
+                    // Call the function to update size visibility
+                    updateSizeVisibility(productData.haveSizes);
+                })
+                .catch(error => {
+                    console.error('Error fetching product details:', error);
+                });
+        </script>
+        
+        
 </body>
 </html>

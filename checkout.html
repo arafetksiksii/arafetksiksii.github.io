@@ -1,285 +1,378 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="favicon.png">
-
-    <meta name="description" content="" />
-    <meta name="keywords" content="bootstrap, bootstrap4" />
-
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="css/tiny-slider.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JIGGY</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
     <style>
-        body, html {
-            background-color: white;
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('fonts/minecraft.ttf') format('truetype');
         }
-        .header-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: 'Minecraft', sans-serif;
+        }
+
+        .frame-container {
+            position: relative;
+            background: url('images/frame_pc.png') no-repeat center center;
+            background-size: 100% 100%;
+            width: 100vw;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            z-index: 999;
+            overflow-y: auto;
         }
-        .social-icons {
+
+        .frame-container video {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
-        }
-        .social-icons a {
-            color: black;
-            text-decoration: none;
-            font-size: 24px;
-            margin-left: 10px;
-            transition: color 0.3s ease;
-        }
-        .social-icons a:hover {
-            color: black;
-        }
-        .navbar-brand {
-            color: black;
-            text-decoration: none;
-            font-size: 24px;
-        }
-        .navbar-brand img {
-            height: 50px;
-            width: auto;
-        }
-        .loader-wrapper {
-            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #fff;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .header {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            z-index: 9999;
+            justify-content: center;
+            width: 90%;
+            margin-top: 0px;
+        }
+
+        .header .logo {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .checkout-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+        }
+        .no-affiliation img {
+            display: none;
+        }
+        .order-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .order-summary:hover {
+            background-color: #555;
+        }
+
+        .order-summary .left-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .order-summary .left-section img {
+            margin-left: 5px;
+            width: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .order-details {
+            display: none;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .input-field {
+            margin-bottom: 15px;
+        }
+
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+        }
+
+        .buttons {
+    display: flex;
+    flex-direction: row; /* Change from column to row */
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 15px; /* Add spacing between the buttons */
+    margin-top: 20px;
+}
+
+
+.buttons img {
+    cursor: pointer;
+    margin-top: 15px;
+    width: 80px; /* Default size for all buttons */
+    height: 25px;
+}
+
+.buttons img[alt="Checkout Button"] {
+    width: 250px; /* Larger size for the checkout button */
+    height: 50px;
+    margin-top: 0px;
+    margin-right: 100px;
+
+}
+
+
+        @media (max-width: 768px) {
+            .frame-container {
+                background: url('images/frame_phone.png') no-repeat center center;
+                background-size: 100% 100%;
+            }
+
+            .header .logo {
+                height: 35px;
+            }
+            .buttons img {
+    cursor: pointer;
+    margin-top: 15px;
+    width: 50px; /* Default size for all buttons */
+    height: 15px;
+}
+
+.buttons img[alt="Checkout Button"] {
+    width: 160px; /* Larger size for the checkout button */
+    height: 38px;
+    margin-top: 0px;
+    margin-right: 60px;
+
+}
+.checkout-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+        }
+        .no-affiliation img {
+            display: block;
+        }
         }
     </style>
 </head>
 <body>
-    <div class="loader-wrapper">
-        <img class="loader" src="jiggylogo.gif" alt="Loading...">
-    </div>
-    <div class="header-overlay">
-        <a class="navbar-brand" href="index.html"><img src="jiggyp.png" alt="Brand Image"></a>
-    </div>
+    <div class="frame-container">
+        <!-- Background Video -->
+        <video autoplay muted loop>
+            <source src="images/glitch_background.webm" type="video/mp4">
+        </video>
 
-    <div class="untree_co-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-5 mb-md-0">
-                    <h2 class="h3 mb-3 text-black">Billing Details</h2>
-                    <div class="p-3 p-lg-5 border bg-white">
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label for="c_name" class="text-black">Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_name" name="c_name" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="c_country" class="text-black">State <span class="text-danger">*</span></label>
-                            <select id="c_country" class="form-control" required>
-                                <option value="">Select a state</option>    
-                                <option value="Ariana">Ariana</option>    
-                                <option value="Béja">Béja</option>    
-                                <option value="Ben Arous">Ben Arous</option>    
-                                <option value="Bizerte">Bizerte</option>    
-                                <option value="Gabès">Gabès</option>    
-                                <option value="Gafsa">Gafsa</option>    
-                                <option value="Jendouba">Jendouba</option>    
-                                <option value="Kairouan">Kairouan</option>    
-                                <option value="Sidi Bouzid">Sidi Bouzid</option>    
-                                <option value="Siliana">Siliana</option>    
-                                <option value="Sousse">Sousse</option>    
-                                <option value="Tataouine">Tataouine</option>    
-                                <option value="Tozeur">Tozeur</option>    
-                                <option value="Tunis">Tunis</option>    
-                                <option value="Zaghouan">Zaghouan</option>    
-                                <option value="Kasserine">Kasserine</option>    
-                                <option value="Kebili">Kebili</option>    
-                                <option value="Kef">Kef</option>    
-                                <option value="Mahdia">Mahdia</option>    
-                                <option value="Manouba">Manouba</option>    
-                                <option value="Medenine">Medenine</option>    
-                                <option value="Monastir">Monastir</option>    
-                                <option value="Nabeul">Nabeul</option>    
-                                <option value="Sfax">Sfax</option>                              
-                            </select>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label for="c_adress" class="text-black">Address <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_adress" name="c_adress" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label for="c_phone" class="text-black">Phone number <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_phone" name="c_phone" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="c_email" name="c_email" required>
-                            </div>
-                        </div>
+        <div class="header">
+            <img class="logo" src="images/jiggy_text_white.png" alt="JIGGY Logo">
+
+            <div class="checkout-container">
+                <div class="order-summary" onclick="toggleOrderDetails()">
+                    <div class="left-section">
+                        <span>Order Summary</span>
+                        <img src="images/arrow_down.png" alt="Toggle" id="toggle-icon">
                     </div>
+                    <span id="total-price">200 TND</span> <!-- This will be dynamically updated -->
                 </div>
                 
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="h3 mb-3 text-black">Your Order</h2>
-                            <div class="p-3 p-lg-5 border bg-white">
-                                <table class="table site-block-order-table mb-5">
-                                    <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="order-items"></tbody>
-                                </table>
-                                <div id="subtotal" class="font-weight-bold mb-3"></div>
-                                <div id="delivery" class="font-weight-bold mb-3">Delivery: 0.00 TND</div>
-                                <div id="total" class="font-weight-bold"></div>
-                                <div class="form-group mt-3">
-                                    <button class="btn btn-black btn-lg py-3 btn-block" id="placeOrderBtn" disabled>Place Order</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="order-details" id="order-details">
+                    <!-- Cart items will be inserted here dynamically -->
+                     
+                     
                 </div>
                 
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        renderOrderItems();
 
-                        const placeOrderBtn = document.getElementById('placeOrderBtn');
-                        const formFields = document.querySelectorAll('#c_name, #c_country, #c_adress, #c_phone, #c_email');
+                <div class="input-field">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" placeholder="" required>
+                </div>
+                <div class="input-field">
+                    <label for="phone-number">Phone Number</label>
+                    <input type="text" id="phone-number" placeholder="" required pattern="\d{8}" title="Phone number must be exactly 8 digits">
+                </div>
+                <div class="input-field">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" placeholder="" required>
+                </div>
 
-                        formFields.forEach(field => {
-                            field.addEventListener('input', checkFormValidity);
-                        });
 
-                        function renderOrderItems() {
-                            let orderItems = JSON.parse(localStorage.getItem('cart')) || [];
-                            let orderTableBody = document.getElementById('order-items');
-                            let subtotalElement = document.getElementById('subtotal');
-                            let totalElement = document.getElementById('total');
-
-                            orderTableBody.innerHTML = '';
-
-                            let subtotalAmount = 0;
-
-                            orderItems.forEach(item => {
-                                let total = item.productPrice * item.quantity;
-                                subtotalAmount += total;
-
-                                let row = document.createElement('tr');
-                                row.innerHTML = `
-                                    <td>${item.productName} x ${item.quantity} ${item.size}</td>
-                                    <td>${total.toFixed(2)} TND</td>
-                                `;
-                                orderTableBody.appendChild(row);
-                            });
-
-                            let deliveryFee = 0;
-                            let totalAmount = subtotalAmount + deliveryFee;
-
-                            subtotalElement.innerText = `Subtotal: ${subtotalAmount.toFixed(2)} TND`;
-                            totalElement.innerText = `Total: ${totalAmount.toFixed(2)} TND`;
-                        }
-
-                        function checkFormValidity() {
-                            let isFormValid = true;
-                            formFields.forEach(field => {
-                                if (!field.value.trim()) {
-                                    isFormValid = false;
-                                }
-                            });
-                            placeOrderBtn.disabled = !isFormValid;
-                        }
-
-                        placeOrderBtn.addEventListener('click', function () {
-                            placeOrder();
-                        });
-
-                        function placeOrder() {
-                            const name = document.getElementById('c_name').value;
-                            const state = document.getElementById('c_country').value;
-                            const address = document.getElementById('c_adress').value;
-                            const phoneNumber = document.getElementById('c_phone').value;
-                            const email = document.getElementById('c_email').value;
-
-                            const orderItems = JSON.parse(localStorage.getItem('cart')) || [];
-                            const orderString = orderItems.map(item => `${item.productName} x ${item.quantity} ${item.size}`).join(', ');
-
-                            const data = {
-                                name,
-                                state,
-                                address,
-                                phoneNumber,
-                                email,
-                                order: orderString
-                            };
-
-                            console.log('Sending data:', data);
-
-                            fetch('https://jiggy-back-f6020cdcad45.herokuapp.com/commande/', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify(data)
-                            })
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Failed to place order');
-                                }
-                                return response.json();
-                            })
-                            .then(responseData => {
-                                console.log('Order placed successfully:', responseData);
-                                localStorage.clear();
-                                window.location.href = 'thankyou.html';
-                            })
-                            .catch(error => {
-                                console.error('Error placing order:', error);
-                                alert('Failed to place order. Please try again later.');
-                            });
-                        }
-
-                        // Loader
-                        const loaderWrapper = document.querySelector('.loader-wrapper');
-                        window.addEventListener('load', function () {
-                            loaderWrapper.style.display = 'none';
-                        });
-                    });
-                </script>
+                <div class="buttons">
+                    <div class="buttons">
+                        <img src="images/checkout-btn.png" alt="Checkout Button" onclick="submitOrder()">
+                        <img src="images/RETURN-btn.png" alt="Return Button" onclick="window.location.href='/cart';">
+                    </div>
+                    
+                </div>
             </div>
+                    <!-- Additional images for small screens -->
+        <div class="no-affiliation" style="text-align: center; margin-top: 20px;">
+            <img src="images/NO AFFILIATION.png" alt="No Affiliation">
+        </div>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/tiny-slider.js"></script>
-    <script src="js/custom.js"></script>
+    <script>
+        // Fetch the total price and cart details from localStorage
+        window.onload = function() {
+            // Fetch total price and update it on the page
+            const totalPrice = localStorage.getItem('totalPrice');
+            document.getElementById('total-price').textContent = totalPrice ;
+    
+            // Fetch cart items
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            // Get the order details container
+            const orderDetails = document.getElementById('order-details');
+    
+            // Clear existing details (in case the page is reloaded)
+            orderDetails.innerHTML = '';
+    
+            // Loop through cart items and add them to the order details
+            cart.forEach(item => {
+                const productItem = document.createElement('div');
+                productItem.classList.add('product-item');
+                
+                const itemDetails = `
+                    <span>${item.quantity}x ${item.title} ${item.size} </span>
+                    <span>${item.price * item.quantity} TND</span>
+                    
+                `;
+                productItem.innerHTML = itemDetails;
+                orderDetails.appendChild(productItem);
+            });
+                // Add Delivery charge after cart items
+    const deliveryItem = document.createElement('div');
+    deliveryItem.classList.add('product-item');
+    deliveryItem.innerHTML = `
+        <span>Delivery</span>
+        <span>7 TND</span>
+    `;
+    orderDetails.appendChild(deliveryItem);
+        };
+    
+        // Function to toggle the order details visibility
+        function toggleOrderDetails() {
+            const orderDetails = document.getElementById('order-details');
+            const toggleIcon = document.getElementById('toggle-icon');
+            if (orderDetails.style.display === 'none' || orderDetails.style.display === '') {
+                orderDetails.style.display = 'block';
+                toggleIcon.style.transform = 'rotate(180deg)';
+            } else {
+                orderDetails.style.display = 'none';
+                toggleIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+        function validateForm() {
+    const fullName = document.getElementById('full-name').value;
+    const phoneNumber = document.getElementById('phone-number').value;
+    const address = document.getElementById('address').value;
+
+    if (!fullName || !phoneNumber || !address) {
+    alert('All fields are required!');
+    return false;
+}
+
+if (!/^\d{8}$/.test(phoneNumber)) {
+    alert('Please enter a valid phone number with exactly 8 digits.');
+    return false;
+}
+
+    return true;
+}
+
+    </script>
+  <script>
+    // Function to submit the order
+    async function submitOrder() {
+        // Validate the form first
+        if (!validateForm()) {
+            return;
+        }
+
+        // Gather form data
+        const fullName = document.getElementById('full-name').value;
+        const phoneNumber = document.getElementById('phone-number').value;
+        const address = document.getElementById('address').value;
+
+        // Fetch orderText and totalPrice from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalPrice = localStorage.getItem('totalPrice');
+
+        // Generate orderText as a summary of the cart
+        const orderText = cart.map(item =>
+            `${item.quantity}x ${item.title} (${item.size}) - ${item.price * item.quantity} TND`
+        ).join(', ') + ", Delivery - 7 TND";
+
+        try {
+            // Make the POST request to the createOrder route
+            const response = await fetch('http://localhost:3000/orders/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fullName,
+                    phoneNumber,
+                    address,
+                    orderText,
+                    totalPrice
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to create order');
+            }
+
+            // Get the response data
+            const data = await response.json();
+            console.log('Order created:', data);
+
+            // Clear localStorage for future orders
+            localStorage.removeItem('cart');
+            localStorage.removeItem('totalPrice');
+
+            // Redirect to the thank you page with orderId, totalPrice, and orderText in the URL
+            const encodedOrderText = encodeURIComponent(orderText); // URL encode the orderText
+            window.location.href = `/thankyou?orderId=${data.orderId}&totalPrice=${totalPrice}&orderText=${encodedOrderText}`;
+        } catch (error) {
+            console.error('Error creating order:', error);
+            alert('Failed to place order. Please try again later.');
+        }
+    }
+</script>
+
+    
+    
+
 </body>
 </html>
-

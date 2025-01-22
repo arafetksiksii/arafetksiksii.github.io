@@ -1,215 +1,276 @@
-<!-- /*
-* Bootstrap 5
-* Template Name: Furni
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGGY</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <meta name="description" content="" />
-  <meta name="keywords" content="bootstrap, bootstrap4" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Press+Start+2P&display=swap" rel="stylesheet">  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Permanent+Marker&family=Signika+Negative:wght@300..700&family=Teko:wght@300..700&display=swap" rel="stylesheet">
-		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-		<link href="css/tiny-slider.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
-		<title>JIGGY</title>
-		<style>
-		    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: auto;
-      background-color: white;
-      background-image: url('background_about.jpg'); 
-      background-size: 700px; 
-      background-repeat: no-repeat; 
-      background-attachment: fixed;
-      background-position: bottom; 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+        @font-face {
+    font-family: 'Minecraft';
+    src: url('fonts/Minecraft.ttf') format('truetype');
+}
+.text-box p {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 16px; /* Adjust font size as needed */
+    color: white; /* Ensure the text is visible */
+    text-align: center; /* Optional: Adjust alignment */
+    line-height: 1.5; /* Optional: Adjust line spacing */
+}
+        .frame-container {
+            position: relative;
+            background: url('images/frame_pc.png') no-repeat center center;
+            background-size: 100% 100%;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Add the video as background */
+        .frame-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content-container {
+            width: 1200px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        /* Style for the arrow icon image */
+        .image-container-top {
+        display: none;
     }
-			.permanent-marker-regular {
-			  font-family: "inter", cursive;
-			  font-weight: 400;
-			  font-style: normal;
-			}
-		
-			.header-overlay {
-			  position: absolute;
-			  top: 0;
-			  left: 0;
-			  width: 100%;
-			  padding: 20px;
-			  box-sizing: border-box;
-			  display: flex;
-			  justify-content: space-between;
-			  align-items: center;
-			  z-index: 999;
-			}
-			.navbar-brand {
-			  color: black; /* Changed to black */
-			  text-decoration: none;
-			  font-size: 24px;
-			}
-			.navbar-brand span {
-			  font-size: 32px;
-			  font-weight: bold;
-			}
-			.cart-icon img {
-			  width: 30px;
-			  height: auto;
-			}
-			
-		/* Media query for small screens */
-
-
-		
-			.icon-cross {
-			  position: absolute;
-			  top: 10px;
-			  right: 10px;
-			}
-			.icon-cross img {
-			  width: 20px;
-			  height: auto;
-			}
-				/* New styles for social icons */
-				.social-icons {
-			  position: absolute;
-			  bottom: 20px;
-			  right: 20px;
-			  z-index: 999;
-			}
-			.social-icons a {
-			  color: black;
-			  text-decoration: none;
-			  font-size: 24px;
-			  margin-left: 10px;
-			  transition: color 0.3s ease;
-			}
-			.social-icons a:hover {
-			  color: black;
-			}
-			.navbar-brand img {
-    height: 50px; /* Adjust the height as needed */
-    width: auto;  /* Keeps the aspect ratio */
-}
-/* Add this CSS in the <style> tag or in an external stylesheet */
-
-/* Section Heading */
-.section-heading {
-  font-size: 36px;
-  font-weight: bold;
-  color: #333; /* Adjust the color as needed */
+/* Style for the arrow icon image */
+.arrow-icon {
+    width: 50px !important; /* Adjust the width */
+    height: auto !important; /* Maintain aspect ratio */
+    margin-bottom: 0px !important; /* Space below the image */
 }
 
-/* About Paragraph */
-.about-paragraph {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #666; 
-  /* Adjust the color as needed */
+/* Style for the About image */
+.about-image {
+    width: 100px !important; /* Adjust the width */
+    height: auto !important; /* Maintain aspect ratio */
+    margin-bottom: 10px !important; /* Space below the image */
 }
-/* Update this CSS in the <style> tag or in an external stylesheet */
 
-/* Center the About Us section vertically */
-#about-us {
+
+        .window-box {
+            background: url('images/window_home_pc.png') no-repeat center center;
+            background-size: contain;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        .window-box p {
+            margin: 0;
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: white;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+    .frame-container {
+        background: url('images/frame_phone.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .image-container-top {
+        display: block;
+    }
+
+    .window-box {
+    background: url('images/window_home_phone.png') no-repeat center center;
+    background-size: contain;
+    width: 350px;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px; /* Increased padding around the box */
+    overflow-y: auto;
+    box-sizing: border-box; /* Ensures padding is included in the total width/height */
 }
-.loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #fff; /* Background color of the loader */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Ensure it's above other content */
+
+.window-box p {
+    margin: 0;
+    font-size: 1.5em;
+    line-height: 1.5;
+    color: white;
+    word-wrap: break-word;
+    max-width: 100%;
+    padding: 10px; /* Increased padding around the text inside the box */
 }
-/* Media query for small screens */
-@media (max-width: 767px) {
-  body, html {
-    background-image: none; /* Remove the background image */
-  }
-	      /* Add margin-top to the About Us section */
-      #about-us {
-        margin-top: 30px;
-      }
-      /* Add margin-top to the About Paragraph */
-      .about-paragraph {
+
+    .content-container {
+        width: 90vw;
+        height: auto;
+        padding: 10px;
+        font-size: 0.7em;
+    }
+
+    /* Add the image at the top center of the screen */
+    .image-container-top {
+        text-align: center;
         margin-top: 20px;
-      }
+    }
+
+    .image-container-top img {
+        width: 90px;
+        height: auto;
+    }
+    .jiggy-logo img {
+        width: 40px; /* Adjust width for small screens */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: -15px;
+    }
+
+    /* Resize the "No Affiliation" image */
+    .no-affiliation img {
+        width: 100px; /* Adjust width for small screens */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: -35px;
+
+    }
+
+    /* Style for the arrow icon */
+    .arrow-icon {
+        width: 30px !important; /* Adjust the width */
+        height: auto !important; /* Maintain aspect ratio */
+        margin-bottom: 0px !important; /* Space below the image */
+        margin-right: 300px;
+    }
+
+    /* Style for the About image */
+    .about-image {
+        width: 80px !important; /* Adjust the width */
+        height: auto !important; /* Maintain aspect ratio */
+        margin-bottom: 0px !important; /* Space below the image */
+        margin-right: 250px;
+
+    }
+}
+ /* Loader styles */
+ .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-			
-		  </style>
-	</head>
+        /* Hide loader when the page is loaded */
+        body.loaded .loader-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+      <!-- Loader -->
+      <div class="loader-container">
+        <img src="images/loading.gif" alt="Loading">
+    </div>  
+    <div class="frame-container">
+        <!-- Background Video -->
+        <video autoplay muted loop>
+            <source src="images/glitch_background.webm" type="video/mp4">
+        </video>
 
-	<body>
-		<div class="loader-wrapper">
-			<img class="loader" src="jiggylogo.gif" alt="Loading...">
-		  </div>
-  <!-- Start Header Overlay -->
-  <div class="header-overlay">
-	<a class="navbar-brand" href="index.html"><img src="jiggyp.png" alt="Brand Image"></a>
-    <div class="cart-icon">
-      <a class="nav-link" href="cart.html"><img src="images/cartp.png"></a>
+        <div class="content-container">
+    <!-- Images section -->
+    <div class="image-container-top">
+        <img src="images/jiggy_text_white.png" alt="Jiggy Text White" />
     </div>
-  </div>
-  <!-- End Header Overlay -->
+    
+<div class="image-container">
+    <a href="/home">
+        <img src="images/icon_arrow_left.png" alt="Arrow Left Icon" class="arrow-icon">
+    </a>
+    </div>
 
-<!-- Add this section below the existing code -->
-<section id="about-us" class="py-5 d-flex align-items-center">
-	<div class="container">
-	  <div class="row">
-		<div class="col-lg-8 mx-auto text-center">
-		  <h2 class="section-heading mb-4">ABOUT US</h2>
-		  <p class="about-paragraph">We have a mission to cultivate a dynamic community of individuals who dare to revolutionize their fashion statements, be real, and stand out from the crowd. <br>
-			Our vision is to create a fashion movement that celebrates diversity and champions authenticity, where every outfit is an opportunity to showcase your one-of-a-kind style and leave a lasting impression, daring to be different and daring others to follow suit in embracing their individuality.</p>
-			
-		</div>
-	  </div>
-	</div>
-  </section>
-  
-		
+<!-- Images section -->
+<div class="image-container">
+    <img src="images/About1.png" alt="About Image" class="about-image">
+</div>
 
+            <!-- Rectangle box with the about text -->
+            <div class="window-box">
+                <div class="text-box">
+                    <p>We aim to build a community <br> that challenges fashion norms,<br> celebrates diversity, <br>and promotes authenticity,<br> where every outfit expresses individuality<br> and inspires others to do the same.</p>
+                </div>
+            </div>
 
+            <!-- Footer -->
+<!-- Remove inline style here -->
+<div class="jiggy-logo" style="text-align: center; margin-top: 20px;">
+    <img src="images/jiggy_logo_white.png" alt="Jiggy Logo">
+</div>
 
-		
+<div class="no-affiliation" style="text-align: center; margin-top: 20px;">
+    <img src="images/NO AFFILIATION.png" alt="No Affiliation">
+</div>
 
-  <div class="social-icons">
-	 
-	 <a href="https://www.instagram.com/jiggy.atw?igsh=cnR0NnhsaXl1ZjFr"><i class="fab fa-instagram"></i></a>
-	<a href="https://www.tiktok.com/@jiggy.atw?_t=8mVVGAOFpf4&_r=1"><i class="fab fa-tiktok"></i></a>
-  </div>
-		<script src="js/bootstrap.bundle.min.js"></script>
-		<script src="js/tiny-slider.js"></script>
-		<script src="js/custom.js"></script>
-		<script>
-			window.addEventListener("load", function() {
-			  var loader = document.querySelector(".loader-wrapper");
-			  loader.style.display = "none";
-			});
-			</script>
-			<script>
-				window.addEventListener("load", function() {
-				  var loader = document.querySelector(".loader-wrapper");
-				  loader.style.display = "none";
-				});
-				</script>
-	</body>
-
+            
+        </div>
+    </div>
+    <script>
+        // Remove the loader after the page is fully loaded
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
 </html>

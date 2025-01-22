@@ -1,243 +1,441 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGGY</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <meta name="description" content="" />
-  <meta name="keywords" content="bootstrap, bootstrap4" />
+    <style>
+        /* Importing Minecraft font */
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('fonts/Minecraft.ttf') format('truetype');
+        }
 
-  <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="css/tiny-slider.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <title>JIGGY </title>
-  <style>
-        body, html {
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            font-family: 'Minecraft', sans-serif; /* Apply Minecraft font */
+            color: white; /* Default text color */
+        }
 
-      background-color: white;
-    }
-    .loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #fff; /* Background color of the loader */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Ensure it's above other content */
+        .frame-container {
+            position: relative;
+            background: url('images/frame_pc.png') no-repeat center center;
+            background-size: 100% 100%;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        /* Add the glitch video background */
+        .frame-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Logo and Navigation */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            margin-top: 25px;
+        }
+
+        .header .logo {
+            height: 40px;
+            margin-bottom: 10px;
+            margin-top: -20px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1220px;
+        }
+
+        .navigation img {
+            height: 30px;
+            cursor: pointer;
+        }
+
+        /* Mobile adjustment for the frame */
+        @media (max-width: 768px) {
+            .frame-container {
+                background: url('images/frame_phone.png') no-repeat center center;
+                background-size: 100% 100%;
+            }
+            .header .logo {
+                height: 35px;
+                padding-top: 0px;  
+                padding-bottom: 10px;
+            }
+
+            .navigation img {
+                height: 35px;
+                padding-bottom: 0px;
+            }
+
+            .shop-title img {
+                height: 40px;
+                margin-right: 220px;
+                margin-bottom: 0px;
+            }
+            .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            margin-top: 0px;
+        }
+        .go-checkout-btn {
+            background-image: url('images/go-checkout-btn.png');
+            background-size: cover;
+            width: 300px !important;
+            height: 35px !important;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+        }    
+        }
+
+        /* Cart Container inside window image */
+        .cart-container {
+    width: 70%;
+    background: url('images/window_home_pc.png') no-repeat center center;
+    background-size: 100% 100%;
+    padding: 10px; /* Adjust padding as needed */
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 300px; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Optional: Customize the scrollbar */
+    scrollbar-color: white transparent; /* Optional: Customize the scrollbar color */
 }
-    .header-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 999;
-    }
-    .navbar-brand {
-      color: black; /* Changed to black */
-      text-decoration: none;
-      font-size: 24px;
-    }
-    .cart-totals-wrapper {
-      float: left; /* Align to the left */
-      width: 100%; /* Ensure it takes full width */
-    }
-    .navbar-brand img {
-    height: 50px; /* Adjust the height as needed */
-    width: auto;  /* Keeps the aspect ratio */
+.cart-container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
 }
-  </style>
+
+.cart-container::-webkit-scrollbar-thumb {
+    background-color: white; /* Scrollbar thumb color */
+    border-radius: 4px; /* Rounded edges */
+}
+
+.cart-container::-webkit-scrollbar-track {
+    background: transparent; /* Scrollbar track color */
+}
+
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+            padding-left: 15px;
+        }
+
+        .cart-item-details .quantity {
+            font-weight: bold;
+        }
+
+        .cart-item-details .price {
+            font-size: 16px;
+            color: white; /* White text for price */
+        }
+
+        .cart-item-title {
+            font-size: 18px;
+            color: white; /* White text for title */
+            margin: 5px 0;
+        }
+
+        .delete-btn img {
+            width: 20px;
+            cursor: pointer;
+        }
+
+        /* Delivery, Total and Go Checkout */
+        .total-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            width: 40%;
+        }
+
+        .total-item {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .total-item2 {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .go-checkout-btn {
+            background-image: url('images/go-checkout-btn.png');
+            background-size: cover;
+            width: 400px;
+            height: 55px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Loader styles */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Hide loader when the page is loaded */
+        body.loaded .loader-container {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <div class="loader-wrapper">
-    <img class="loader" src="jiggylogo.gif" alt="Loading...">
-  </div>
-  <!-- Start Header Overlay -->
-  <div class="header-overlay">
-		<a class="navbar-brand" href="index.html"><img src="jiggyp.png" alt="Brand Image"></a>
-  </div>
-  <!-- End Header Overlay -->
+     <!-- Loader -->
+     <div class="loader-container">
+        <img src="images/loading.gif" alt="Loading">
+    </div>   
+    <div class="frame-container">
+        <!-- Background Video -->
+        <video autoplay muted loop>
+            <source src="images/glitch_background.webm" type="video/mp4">
+        </video>
 
-  <div class="untree_co-section before-footer-section">
-    <div class="container">
-      <div class="row mb-5">
-        <form class="col-md-12" method="post">
-          <div class="site-blocks-table">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="product-thumbnail">Image</th>
-                  <th class="product-name">Product</th>
-                  <th class="product-price">Price</th>
-                  <th class="product-size">Size</th>
-                  <th class="product-quantity">Quantity</th>
-                  <th class="product-total">Total</th>
-                  <th class="product-remove"></th>
-                </tr>
-              </thead>
-             <!-- Inside the <tbody> element, remove the hardcoded <tr> elements -->
-<tbody class="site-blocks-table-body"></tbody>
-
-            </table>
-          </div>
-        </form>
-      </div>
-      <div class="row">
-        <div class="cart-totals-wrapper col-md-6 pl-5"> <!-- Added pl-5 class for additional padding -->
-          <div class="row justify-content-end">
-            <div class="col-md-7">
-              <div class="row">
-                <div class="col-md-12 text-right border-bottom mb-5">
-                  <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <span class="text-black">Subtotal</span>
-                </div>
-                <div class="col-md-6 text-right">
-                  <strong id="subtotal" class="text-black">0.00 TND</strong> <!-- Updated subtotal element with id -->
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <span class="text-black">Delivery</span>
-                </div>
-                <div class="col-md-6 text-right">
-                  <strong id="delivery" class="text-black">0.00 TND</strong> <!-- Updated subtotal element with id -->
-                </div>
-              </div>
-              <div class="row mb-5">
-                <div class="col-md-6">
-                  <span class="text-black">Total</span>
-                </div>
-                <div class="col-md-6 text-right">
-                  <strong id="total" class="text-black">0.00 TND</strong> <!-- Updated total element with id -->
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-<button id="checkoutButton" class="btn btn-black btn-lg py-3 btn-block" onclick="proceedToCheckout()">Proceed To Checkout</button>
-                </div>
-              </div>
+        <!-- Header with Logo and Navigation -->
+        <div class="header">
+            <img class="logo" src="images/jiggy_text_white.png" alt="JIGGY Logo">
+            <div class="navigation">
+                <img class="back-arrow" src="images/icon_arrow_left.png" alt="Back" onclick="location.href='/shop'">
             </div>
-          </div>
         </div>
-        <div class="col-md-6">
-          <!-- Rest of the Content -->
+
+        <!-- Cart Section inside the window image -->
+        <div class="cart-container">
+            <div class="cart-item">
+                <img src="images/product1.png" alt="Product 1">
+                <div class="cart-item-details">
+                    <div class="quantity">2X M</div>
+                    <div class="price">163 TND</div>
+                    <div class="cart-item-title">Product Title 1</div>
+                </div>
+                <div class="delete-btn">
+                    <img src="images/x-btn.png" alt="Delete" onclick="deleteItem(this)">
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="images/product1.png" alt="Product 1">
+                <div class="cart-item-details">
+                    <div class="quantity">2X M</div>
+                    <div class="price">163 TND</div>
+                    <div class="cart-item-title">Product Title 1</div>
+                </div>
+                <div class="delete-btn">
+                    <img src="images/x-btn.png" alt="Delete" onclick="deleteItem(this)">
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="images/product1.png" alt="Product 2">
+                <div class="cart-item-details">
+                    <div class="quantity">1X L</div>
+                    <div class="price">123 TND</div>
+                    <div class="cart-item-title">Product Title 2</div>
+                </div>
+                <div class="delete-btn">
+                    <img src="images/x-btn.png" alt="Delete" onclick="deleteItem(this)">
+                </div>
+            </div>
         </div>
-      </div>
-      
+
+        <!-- Delivery, Total, and Go Checkout Button -->
+         
+        <div class="total-container">
+            <div class="total-item2">
+                <span>Delivery</span>
+                <span>7 TND</span>
+            </div>
+            <div  class="total-item">
+                <span>Total</span>
+                <span id="total" >286 TND</span> <!-- Update this dynamically based on cart total -->
+                
+            </div>
+            <button class="go-checkout-btn"  onclick="saveTotalPrice()"></button>
+        </div>
     </div>
-  </div>
-<!-- Add this script section at the bottom of the body -->
-	<script>
-  function proceedToCheckout() {
-    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cartItems.length === 0) {
-      alert('You must have at least 1 product in your bag.');
-    } else {
-      window.location.href = 'checkout.html';
-    }
-  }
-</script>
+    <script>
+
+// Function to load and display cart items from localStorage
+function loadCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || []; // Get cart from localStorage
+    const cartContainer = document.querySelector('.cart-container'); // Select cart container
+    const deliveryFee = 7; // Fixed delivery fee
+    let totalPrice = 0; // Initialize total price
+
+    // Clear the cart container to avoid duplicates
+    cartContainer.innerHTML = '';
+
+    // Loop through cart items and dynamically create HTML for each
+    cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="cart-item-details">
+                <div class="quantity">${item.quantity}X ${item.size}</div>
+                <div class="price">${item.price} TND</div>
+                <div class="cart-item-title">${item.title}</div>
+            </div>
+            <div class="delete-btn">
+                <img src="images/x-btn.png" alt="Delete" onclick="deleteItem(${index})">
+            </div>
+        `;
+
+        cartContainer.appendChild(cartItem);
+
+        // Calculate total for current item (price * quantity)
+        totalPrice += parseFloat(item.price) * item.quantity;
+    });
+
+    // Update the total with delivery fee
+    document.querySelector('.total-item span:nth-child(2)').textContent = `${totalPrice + deliveryFee} TND`;
+}
+
+// Function to delete an item from the cart (update localStorage and UI)
+function deleteItem(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Get cart from localStorage
+    cart.splice(index, 1); // Remove the item at the specified index
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save the updated cart back to localStorage
+    loadCart(); // Reload the cart to reflect changes
+}
+
+// Event listener to load the cart on page load
+window.addEventListener('DOMContentLoaded', loadCart);
+
+    </script>
+    <script>
+        // Function to check cart status and handle display
+        function checkCartStatus() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || []; // Get cart from local storage
+    
+            // Select the cart container and total container
+            const cartContainer = document.querySelector('.cart-container');
+            const totalContainer = document.querySelector('.total-container');
+    
+            if (cart.length === 0) {
+                // Clear the existing cart container
+                cartContainer.innerHTML = '';
+    
+                // Hide the total container
+                totalContainer.style.display = 'none';
+    
+                // Create and display the "Your Cart is Empty" image
+                const emptyCartImage = document.createElement('img');
+                emptyCartImage.src = 'images/your-cart-is-empty.png';
+                emptyCartImage.alt = 'Your Cart is Empty';
+                emptyCartImage.style.display = 'block';
+                emptyCartImage.style.margin = '20px auto';
+                emptyCartImage.style.width = '300px'; // Adjust size as needed
+    
+                // Create and display the "Back to Shop" image
+                const backToShopImage = document.createElement('img');
+                backToShopImage.src = 'images/back-to-shop.png';
+                backToShopImage.alt = 'Back to Shop';
+                backToShopImage.style.display = 'block';
+                backToShopImage.style.margin = '10px auto';
+                backToShopImage.style.cursor = 'pointer';
+                backToShopImage.style.width = '200px'; // Adjust size as needed
+    
+                // Add navigation functionality to "Back to Shop" image
+                backToShopImage.onclick = function () {
+                    window.location.href = '/shop';
+                };
+    
+                // Append images to the cart container
+                cartContainer.appendChild(emptyCartImage);
+                cartContainer.appendChild(backToShopImage);
+            }
+        }
+    
+        // Run the function on page load
+        window.onload = function () {
+            checkCartStatus();
+        };
+    </script>
+    
+
+    <script>
+        // Remove the loader after the page is fully loaded
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+
+
+    </script>
+    <!-- Add the Go to Checkout button -->
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  renderCartItems();
+// Function to calculate and save the total price to local storage
+function saveTotalPrice() {
+    // Get the price and quantity
+    const totalPrice = document.getElementById('total').textContent;
 
-  function renderCartItems() {
-    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    let cartTableBody = document.querySelector('.site-blocks-table-body');
-    let subtotalElement = document.getElementById('subtotal');
-    let deliveryElement = document.getElementById('delivery');
-    let totalElement = document.getElementById('total');
-    let checkoutButton = document.getElementById('checkoutButton');
+    // Save the total price to local storage
+    localStorage.setItem('totalPrice', totalPrice); // Save with two decimal points
 
-    cartTableBody.innerHTML = '';
-
-    let subtotalAmount = 0;
-    const deliveryFee = 0;
-
-    cartItems.forEach((item, index) => {
-      let total = item.productPrice * item.quantity;
-      subtotalAmount += total;
-
-      let row = document.createElement('tr');
-      row.innerHTML = `
-        <td class="product-thumbnail">
-          <img src="${item.image}" alt="Image" class="img-fluid">
-        </td>
-        <td class="product-name">
-          <h2 class="h5 text-black">${item.productName}</h2>
-        </td>
-        <td>${item.productPrice} TND</td>
-        <td class="product-size">
-          <h2 class="h5 text-black">${item.size}</h2>
-        </td>
-        <td>
-          <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px; margin-left: 70px;">
-            <div class="input-group-prepend">
-              <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-            </div>
-            <input type="text" class="form-control text-center quantity-amount" value="${item.quantity}" disabled>
-            <div class="input-group-append">
-              <button class="btn btn-outline-black increase" type="button">&plus;</button>
-            </div>
-          </div>
-        </td>
-        <td>${total} TND</td>
-        <td><button class="btn btn-black btn-sm remove-btn" data-index="${index}">Remove</button></td>
-      `;
-      cartTableBody.appendChild(row);
-    });
-
-    let totalAmount = subtotalAmount + deliveryFee;
-
-    subtotalElement.innerText = `${subtotalAmount.toFixed(2)} TND`;
-    deliveryElement.innerText = `${deliveryFee.toFixed(2)} TND`;
-    totalElement.innerText = `${totalAmount.toFixed(2)} TND`;
-
-    if (cartItems.length === 0) {
-      checkoutButton.disabled = true;
-    } else {
-      checkoutButton.disabled = false;
-    }
-
-    let removeButtons = document.querySelectorAll('.remove-btn');
-    removeButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        let index = parseInt(this.getAttribute('data-index'));
-        cartItems.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cartItems));
-        renderCartItems();
-      });
-    });
-  }
-});
+    // Optionally, navigate to the checkout page
+    window.location.href = '/checkout'; // Change to your checkout page URL
+}
 </script>
 
-  
-    
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/tiny-slider.js"></script>
-  <script src="js/custom.js"></script>
-  <script>
-    window.addEventListener("load", function() {
-      var loader = document.querySelector(".loader-wrapper");
-      loader.style.display = "none";
-    });
-    </script>
 </body>
 </html>
