@@ -283,7 +283,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('_id');
 
 // Fetch product details using the product ID
-fetch(`http://localhost:3000/products/${productId}`)
+fetch(`https://intense-ridge-55408-683d19fc1100.herokuapp.com/products/${productId}`)
     .then(response => response.json())
     .then(productData => {
         // Update product details
@@ -297,7 +297,7 @@ fetch(`http://localhost:3000/products/${productId}`)
         haveSizes2 = productData.haveSizes
 
         // Fetch all products with the same name using POST request
-        fetch('http://localhost:3000/products/search', {
+        fetch('https://intense-ridge-55408-683d19fc1100.herokuapp.com/products/search', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -510,7 +510,7 @@ function changeColor(selectedVariant, colorVariants) {
             }
         
             // Assuming the `productData` object has been fetched already
-            fetch(`http://localhost:3000/products/${productId}`)
+            fetch(`https://intense-ridge-55408-683d19fc1100.herokuapp.com/products/${productId}`)
                 .then(response => response.json())
                 .then(productData => {
                     // Call the function to update size visibility
