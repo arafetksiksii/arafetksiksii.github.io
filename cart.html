@@ -243,7 +243,7 @@
 <body>
      <!-- Loader -->
      <div class="loader-container">
-        <img src="images/loading.gif" alt="Loading">
+        <img src="images/loading_pc.gif" alt="Loading">
     </div>   
     <div class="frame-container">
         <!-- Background Video -->
@@ -370,6 +370,7 @@ window.addEventListener('DOMContentLoaded', loadCart);
             // Select the cart container and total container
             const cartContainer = document.querySelector('.cart-container');
             const totalContainer = document.querySelector('.total-container');
+            const header = document.querySelector('.header')
     
             if (cart.length === 0) {
                 // Clear the existing cart container
@@ -377,7 +378,6 @@ window.addEventListener('DOMContentLoaded', loadCart);
     
                 // Hide the total container
                 totalContainer.style.display = 'none';
-    
                 // Create and display the "Your Cart is Empty" image
                 const emptyCartImage = document.createElement('img');
                 emptyCartImage.src = 'images/your-cart-is-empty.png';
@@ -394,7 +394,7 @@ window.addEventListener('DOMContentLoaded', loadCart);
                 backToShopImage.style.margin = '10px auto';
                 backToShopImage.style.cursor = 'pointer';
                 backToShopImage.style.width = '200px'; // Adjust size as needed
-    
+
                 // Add navigation functionality to "Back to Shop" image
                 backToShopImage.onclick = function () {
                     window.location.href = '/shop';
