@@ -403,21 +403,18 @@ function changeCartButton() {
    // Check if a size is selected
  //  let selectedSize = ""; // Default value
 
-function addToCart() {
+
     // Check if sizes are required and selected
     if (!selectedSize) {
         alert("Please select a size!");
         return; // Stop further execution
     }
 
-
-
     // Proceed to add to cart
     console.log(`Adding to cart with size: "${selectedSize}"`);
     // Add your cart logic here
-}
 
-addToCart()
+
     // Collect product details
     const productDetails = {
         image: document.getElementById('product-image').src,
