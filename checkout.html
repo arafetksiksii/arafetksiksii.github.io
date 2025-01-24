@@ -333,7 +333,7 @@ if (!/^\d{8}$/.test(phoneNumber)) {
 
         // Generate orderText as a summary of the cart
         const orderText = cart.map(item =>
-            `${item.quantity}x ${item.title} (${item.size}) - ${item.price * item.quantity} TND`
+            `${item.quantity}x ${item.title} ${item.color} (${item.size}) - ${item.price * item.quantity} TND`
         ).join(', ') + ", Delivery - 7 TND";
 
         try {
