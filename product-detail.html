@@ -402,6 +402,10 @@ function updateQuantity(action) {
 function changeCartButton() {
    // Check if a size is selected
    let selectedSize = ""; // Default value
+   if (haveSizes2 && !selectedSize) {
+        alert("Please select a size!");
+        return; // Stop further execution
+    }
 
 function addToCart(haveSizes) {
     // Check if sizes are required and selected
