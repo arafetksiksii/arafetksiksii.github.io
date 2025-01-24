@@ -31,6 +31,30 @@
     flex-direction: column;
 }
 
+.image-navigation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: relative;
+    }
+
+    .arrow {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .arrow:hover {
+        opacity: 0.7;
+    }
+
+    .product-image {
+        max-width: 200px;
+        max-height: 200px;
+        border-radius: 10px;
+    }
+
 .no-affiliation img {
             display: none;
         }
@@ -231,8 +255,12 @@
         <!-- Product Details -->
         <div class="product-details">
             <!-- Product Image -->
-            <img id="product-image" class="product-image" src="images/product1.png" alt="Product">
-
+<!-- Left and Right Navigation Arrows -->
+<div class="image-navigation">
+    <img class="arrow left-arrow" src="images/Left1.png" alt="Previous" onclick="changeImage(-1)">
+    <img id="product-image" class="product-image" src="images/product1.png" alt="Product">
+    <img class="arrow right-arrow" src="images/Right1.png" alt="Next" onclick="changeImage(1)">
+</div>
             <!-- Product Title and Price -->
             <div id="product-title" class="product-title">Product Title</div>
             <div id="product-price" class="product-price">$29.99</div>
@@ -295,6 +323,7 @@ fetch(`https://intense-ridge-55408-683d19fc1100.herokuapp.com/products/${product
 
         // Update size availability
         updateSizeAvailability(productData);
+        updateProductImages(productData);
         selectedColor = productData.color
         haveSizes2 = productData.haveSizes
 
@@ -350,6 +379,8 @@ function changeColor(selectedVariant, colorVariants) {
 
     // Update size availability based on the selected color
     updateSizeAvailability(selectedVariant);
+    updateProductImages(selectedVariant);     
+
 
 }
 
@@ -432,6 +463,26 @@ function updateSizeAvailability(selectedVariant) {
         }
     });
 }
+function updateProductImages(selectedVariant) {
+    // Initialize the productImages array with the first two images
+    productImages = [
+        selectedVariant.image,  // First image for the selected color
+        selectedVariant.image2   // Second image (if available)
+    ];
+
+    // Only add image3 if it starts with "https"
+    if (selectedVariant.image3 && selectedVariant.image3.startsWith("https")) {
+        productImages.push(selectedVariant.image3);  // Add third image if valid
+    }
+
+    // Set the initial product image (first image of the selected color)
+    if (productImages.length > 0) {
+        document.getElementById("product-image").src = productImages[0];
+    }
+}
+
+
+
         
        // Change size (updates the selected size image)
 
@@ -473,6 +524,8 @@ function changeColor(selectedVariant, colorVariants) {
 
     // Update size availability based on the selected color
     updateSizeAvailability(selectedVariant);  // Make sure this is using the selected color's availability data
+    updateProductImages(selectedVariant);      // Call the new function to update the product images for the selected color
+
 }
 
 
@@ -500,28 +553,65 @@ function changeColor(selectedVariant, colorVariants) {
             cartImage.src = 'images/cart_empty.png'; // Set the image to cart_empty.png
         }
         </script>
-        <script>
-            // Function to toggle size options based on `haveSizes` value
-            function updateSizeVisibility(haveSizes) {
-                const sizeOptions = document.getElementById('size-options');
-                if (!haveSizes) {
-                    sizeOptions.style.display = 'none';
-                } else {
-                    sizeOptions.style.display = 'flex'; // Ensure it remains visible if `haveSizes` is true
-                }
+       <script>
+        // Function to toggle size options based on `haveSizes` value
+        function updateSizeVisibility(haveSizes) {
+            const sizeOptions = document.getElementById('size-options');
+            if (!haveSizes) {
+                sizeOptions.style.display = 'none';
+            } else {
+                sizeOptions.style.display = 'flex'; // Ensure it remains visible if `haveSizes` is true
             }
-        
-            // Assuming the `productData` object has been fetched already
-            fetch(`https://intense-ridge-55408-683d19fc1100.herokuapp.com/products/${productId}`)
-                .then(response => response.json())
-                .then(productData => {
-                    // Call the function to update size visibility
-                    updateSizeVisibility(productData.haveSizes);
-                })
-                .catch(error => {
-                    console.error('Error fetching product details:', error);
-                });
-        </script>
+        }
+    
+        let currentImageIndex = 0; // Current image index
+        let productImages = []; // Array to store image URLs
+    
+        // Fetch product data from the API
+        fetch(`https://intense-ridge-55408-683d19fc1100.herokuapp.com/products/${productId}`)
+    .then(response => response.json())
+    .then(productData => {
+        // Call the function to update size visibility
+        updateSizeVisibility(productData.haveSizes);
+
+        // Initialize the productImages array with the first two images
+        productImages = [
+            productData.image,  // First image
+            productData.image2   // Second image
+        ];
+
+        // Only add image3 if it starts with "https"
+        if (productData.image3 && productData.image3.startsWith("https")) {
+            productImages.push(productData.image3);  // Add third image if valid
+        }
+
+        // Set the initial product image
+        if (productImages.length > 0) {
+            document.getElementById("product-image").src = productImages[currentImageIndex];
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching product details:', error);
+    });
+
+        // Function to change image
+        function changeImage(direction) {
+            currentImageIndex += direction;
+    
+            // Loop around if index goes out of bounds
+            if (currentImageIndex < 0) {
+                currentImageIndex = productImages.length - 1;
+            } else if (currentImageIndex >= productImages.length) {
+                currentImageIndex = 0;
+            }
+    
+            // Update product image source
+            if (productImages.length > 0) {
+                document.getElementById("product-image").src = productImages[currentImageIndex];
+            }
+        }
+    </script>
+    
         
         
 </body>
